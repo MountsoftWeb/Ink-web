@@ -1,4 +1,5 @@
 <template>
+
   <div class="hello">
       <h1>Hello World ! {{msg}}</h1>
   </div>
@@ -15,3 +16,6 @@ export default {
 }
 </script>
 
+<style>
+  
+</style>

@@ -1,0 +1,15 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /*font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;*/
+    font-family: "SF Pro SC","SF Pro Text","SF Pro Icons","PingFang SC","Helvetica Neue","Helvetica","Arial",sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: #888;
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+    display: block;
+    /*background-color: #e8ebed;*/
+  }
+  
