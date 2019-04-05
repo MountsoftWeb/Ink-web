@@ -1,11 +1,8 @@
 <template>
+    <!-- 无左导航条布局 -->
     <div class="layout">
         <!-- 头部导航 -->
         <a-header></a-header>
-
-        <!-- 左侧菜单 -->
-        <!-- <b-left></b-left> -->
-        <slot></slot>
 
         <!-- 展示路由 -->
         <div class="content">
@@ -56,8 +53,9 @@
         
     }
     .layout .content{
-        margin-left: 180px;
-        width: calc(99% - 180px);
+        /* margin-left: 180px;
+        width: calc(99% - 180px); */
+        width: 99%;
     }
   
 </style>

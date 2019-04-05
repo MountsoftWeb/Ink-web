@@ -1,6 +1,10 @@
 <template>
     <div class="left">
-        leftsasasas
+        <ul>
+
+            <slot></slot>
+
+        </ul>
     </div>
 </template>
 

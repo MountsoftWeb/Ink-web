@@ -3,11 +3,16 @@ import Left from '../../components/left'
 
 
 const CCcomponents = {
-    ALayout : Layout,
-    AHeader : Layout.Header,
-    CFooter : Layout.Footer,
+    ALayout : Layout,                   // 带左导航条页面
+    AHeader : Layout.Header,            // 页面头部信息
     
-    BLeft : Left,
+    
+    
+    CFooter : Layout.Footer,            // 页面底部信息
+    
+
+    BLeft : Left,                       // 左导航条
+    BLayoutNoLeft : Layout.LayoutNoLeft,// 不带左导航条页面
     BLeftItem : Left.LeftItem
 }
 
