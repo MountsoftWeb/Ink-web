@@ -24,4 +24,7 @@
         overflow: auto;
         font-size: 14px;
     }
+    .left ul{
+        list-style: none;
+    }
 </style>
