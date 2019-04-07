@@ -13,6 +13,10 @@
 </script>
 
 <style>
+*{
+    margin: 0;
+    padding: 0;
+}
     .layout .left {
         width: 10%;
     }
