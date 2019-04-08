@@ -2,7 +2,7 @@
   <div class="header clearfix">
     <div class="header-left">
       <a href="#">
-        <img src="./../../img/logo@2x.png" alt>
+        <!-- <img src="../../../../" alt> -->
       </a>
     </div>
 

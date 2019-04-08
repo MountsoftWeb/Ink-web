@@ -1,0 +1,7 @@
+// 状态对象
+
+
+export default {
+    user: {},
+    isLogin: 0      // 判断是否登录 0 ： 未登录 1 ： 已登陆
+}

@@ -5,12 +5,16 @@ import Layout from '@/components/layout/Layout'
 import LayoutNoLeft from '@/components/layout/LayoutNoLeft'
 import Test from '@/views/test.vue'
 
+import Login from '@/views/Login'
+
 import Trading from '@/views/trading'       // 物品交易
 import Test2 from '@/views/community/Community'   // 社团
 
+import store from '@/store/index'
+
 Vue.use(Router)
 
-export default new Router({
+let router = new Router({
   routes: [
     {
       path: '/',
@@ -44,7 +48,11 @@ export default new Router({
     {
       path: '/test1',
       name: 'test1',
+      meta: {
+        requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
+      },
       component: Trading,
+      
       children: [
         {
           path: 'digital',
@@ -61,6 +69,7 @@ export default new Router({
     {
       path: '/test2',
       name: 'test2',
+      
       component: Test2,
       children: [
         {
@@ -72,12 +81,47 @@ export default new Router({
           component: Test
         }
       ]
+    },
+    
+    {
+      path: '/login',
+      name: 'login',
+      component: Login
     }
     // {
     //   path: '/mes',
     //   component: Test
     // }
-
-    
   ]
 })
+// 页面刷新时，重新赋值token
+if (window.localStorage.getItem('token')) {
+  store.commit(types.LOGIN, window.localStorage.getItem('token'))
+}
+
+
+// 路由配置
+// const router = new VueRouter({
+//   routes: routes
+// });
+
+
+router.beforeEach((to, from, next) => {
+  if (to.matched.some(r => r.meta.requireAuth)) {
+      if (store.state.isLogin == '1') {
+          next();
+          return;
+      }
+      else {
+          next({
+              
+              path: '/login',
+              query: {redirect: to.fullPath}
+          })
+      }
+  }
+  else {
+      next();
+  }
+})
+export default router;
