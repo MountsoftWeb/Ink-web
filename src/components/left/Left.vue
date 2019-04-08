@@ -13,6 +13,10 @@
 </script>
 
 <style>
+*{
+    margin: 0;
+    padding: 0;
+}
     .layout .left {
         width: 10%;
     }
@@ -23,5 +27,8 @@
         border-right: 1px solid #dfe4ed;
         overflow: auto;
         font-size: 14px;
+    }
+    .left ul{
+        list-style: none;
     }
 </style>
