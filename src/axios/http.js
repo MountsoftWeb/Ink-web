@@ -1,13 +1,16 @@
 import axios from 'axios'
-import store from './store/index'
+import store from '../store/index'
 // import * as types from './store/types'
-import router from './router/index'
+import router from '../router/index'
 
 
 // axios 配置
 axios.defaults.timeout = 5000
+
+// 默认 json 格式
 axios.defaults.headers.post["Content-Type"] = "application/json;charset=UTF-8";
 // axios.defaults.baseURL = 'https://api.github.com'
+// axios.defaults.headers.common['Authorization'] = store.state.token
 
 // http request 拦截器
 axios.interceptors.request.use(
@@ -42,7 +45,7 @@ axios.interceptors.response.use(
           // 只有在当前路由不是登录页面才跳转
           router.currentRoute.path !== 'login' &&
             router.replace({
-              path: 'login',
+              path: '/login',
               query: { redirect: router.currentRoute.path },
             })
       }

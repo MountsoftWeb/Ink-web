@@ -8,6 +8,14 @@
                 <input type="button" value="登录" v-on:click="submit">
                 <input type="button" value="退出" v-on:click="logout">
         </div>
+
+        <h3>添加新图：</h3>
+    <input type="file" id="saveImage" ref="new_image">
+    <input type="button" v-on:click="addImage" value="添加">
+
+    <h4>原始图：</h4>
+        <img id="getImage" src="/hello/newPIC.jpeg" style="with:100px;height:100px"/>
+        <input type="button" value="获取" v-on:click="getImage">
     </div>
     
 </template>
@@ -40,6 +48,25 @@
             alert(this.$store.state.isLogin)
         },
 
+        addImage: function() {
+           let self = this;
+            if (self.$refs.new_image.files.length !== 0) {
+                var formData = new FormData()
+                formData.append('image_data', self.$refs.new_image.files[0]);
+                //单个文件进行上传
+                this.axios({      
+                    method: "post",
+                    url: "/hello/addImage",
+                    data: formData,
+                    // callback: success
+                }).then(response => {
+        
+                })
+            }
+        },
+        getInage: function() {
+
+        }
     },
     // mounted() {
     //     /*页面初始化调用方法*/

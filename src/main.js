@@ -6,7 +6,7 @@ import router from './router'
 
 // import axios from 'axios'
 // import VueAxios from 'vue-axios'
-import axios from './http'
+import axios from './axios/http'
 import store from './store/index'
 
 // 注册全局组件

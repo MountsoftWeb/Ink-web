@@ -95,9 +95,9 @@ let router = new Router({
   ]
 })
 // 页面刷新时，重新赋值token
-if (window.localStorage.getItem('token')) {
-  store.commit(types.LOGIN, window.localStorage.getItem('token'))
-}
+// if (window.localStorage.getItem('token')) {
+//   store.commit(types.LOGIN, window.localStorage.getItem('token'))
+// }
 
 
 // 路由配置
@@ -105,19 +105,21 @@ if (window.localStorage.getItem('token')) {
 //   routes: routes
 // });
 
-
+// 拦截请求，用户权限判断
 router.beforeEach((to, from, next) => {
   if (to.matched.some(r => r.meta.requireAuth)) {
-      if (store.state.isLogin == '1') {
+      if (store.state.token == '1') {
+      // if(localStorage.getItem('token') === '' || localStorage.getItem('token') === 'null'){
           next();
           return;
       }
       else {
           next({
               
-              path: '/login',
-              query: {redirect: to.fullPath}
-          })
+            path: '/login',
+            query: {redirect: to.fullPath}
+        });
+          return
       }
   }
   else {

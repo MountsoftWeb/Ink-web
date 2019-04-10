@@ -4,7 +4,7 @@ import {
     LOGIN,
     LOGOUT
 } from './mutation-types'
-import axios from './../http'
+import axios from '../axios/http'
 import router from './../router'
 
 export default {
@@ -16,20 +16,18 @@ export default {
     axios({      
         method: "post",
         url: "/hello/login",
-        // data: JSON.stringify(this.loginData),
         data: loginData,
         callback: success
     })
     .then
     (response => {
         console.log(response);
-        if(response.data.code == 200){
+        if(response.data.code == 200){          // 登录成功，将 isLogin 赋值为 1
             alert(response.data.message);
+            // alert(response.data.body.token);
+            // alert(response.data.data);
             commit(LOGIN, '1');
-            
-            // alert(store.state.isLogin)
             router.push({ path: '/' }) 
-            
         }else{
             alert(response.data.message);
             // this.$router.push({ path: '/' }) 
@@ -42,16 +40,7 @@ export default {
     ); 
   },
   // 退出 isLogin : 0
-  logOut({commit}, data){
-     
-    // axios({
-    //     method: 'post',
-    //     url: '/hello/login',
-    //     data: {
-    //       username: '123',
-    //       lastName: '123'
-    //     }
-    //   });
+  logOut({commit}, data){       // 退出用户，将 isLogin 赋值为 0
       commit(LOGOUT, '0')
     }
 }

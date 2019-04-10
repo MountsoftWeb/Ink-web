@@ -1,5 +1,8 @@
-# Ink-web v-1.0.0
+# Ink-web
 
+- vue
+- axios
+- vuex
 
 ## 目录结构
     ├── build                               // webpack 配置文件
@@ -38,4 +41,12 @@
     ├── index.html                          // 入口html文件
     ├── package.json                        // 项目构建配置
     
-   
+## 使用
+已经配置好 node.js, vue
+
+
+> npm install
+
+启动项目
+> npm run dev
+

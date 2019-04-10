@@ -7,10 +7,11 @@ import {
 
 export default {
     [LOGIN] (state, data) {
-        // localStorage.token = token;
-        state.isLogin = data;
+        state.token = data;
+		localStorage.setItem("token",data);
     },
     [LOGOUT] (state, data) {
-        state.isLogin = data
+        state.token = data;
+        localStorage.removeItem("token");
     }
 }
