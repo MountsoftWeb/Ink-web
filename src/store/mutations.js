@@ -8,10 +8,10 @@ import {
 export default {
     [LOGIN] (state, data) {
         state.token = data;
-		localStorage.setItem("token",data);
+		localStorage.setItem('token',data);
     },
     [LOGOUT] (state, data) {
         state.token = data;
-        localStorage.removeItem("token");
+        localStorage.removeItem('token');
     }
 }

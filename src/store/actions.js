@@ -23,10 +23,12 @@ export default {
     (response => {
         console.log(response);
         if(response.data.code == 200){          // 登录成功，将 isLogin 赋值为 1
-            alert(response.data.message);
-            // alert(response.data.body.token);
+            alert(response.data.token);
+            // alert(response.data.token);
             // alert(response.data.data);
-            commit(LOGIN, '1');
+            commit(LOGIN, response.data.token);
+            alert(localStorage.getItem('token'))
+
             router.push({ path: '/' }) 
         }else{
             alert(response.data.message);
@@ -41,6 +43,6 @@ export default {
   },
   // 退出 isLogin : 0
   logOut({commit}, data){       // 退出用户，将 isLogin 赋值为 0
-      commit(LOGOUT, '0')
+      commit(LOGOUT, data)
     }
 }

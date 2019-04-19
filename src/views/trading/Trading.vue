@@ -3,33 +3,33 @@
         <b-left>
             <!-- 左导航条信息 -->
            <div class="left">
-            <div>
-				<span id="menuSpan">数码产品</span>
-				<a href="#">数码产品</a>
-				<a href="#">数码产品</a>
-				<a href="#">数码产品</a>
-			</div>
-			<div class="collapsed">
-				<span id="menuSpan">生活用品</span>
-				<a href="#">生活用品</a>
-				<a href="#">生活用品</a>
-				<a href="#">生活用品</a>
-			</div>
-			<div class="collapsed">
-				<span id="menuSpan">服装衣物</span>
-				<a href="#">服装衣物</a>
-				<a href="#">服装衣物</a>
-				<a href="#">服装衣物</a>
-				<a href="#">服装衣物</a>
-			</div>
-			<div class="collapsed">
-				<span id="menuSpan">教学书籍</span>
-				<a href="#">教学书籍</a>
-				<a href="#">教学书籍</a>
-				<a href="#">教学书籍</a>
-				<a href="#">教学书籍</a>
-			</div>
-    </div>
+                <div>
+                    <span id="menuSpan">数码产品</span>
+                    <a href="#">数码产品</a>
+                    <a href="#">数码产品</a>
+                    <a href="#">数码产品</a>
+                </div>
+                <div class="collapsed">
+                    <span id="menuSpan">生活用品</span>
+                    <a href="#">生活用品</a>
+                    <a href="#">生活用品</a>
+                    <a href="#">生活用品</a>
+                </div>
+                <div class="collapsed">
+                    <span id="menuSpan">服装衣物</span>
+                    <a href="#">服装衣物</a>
+                    <a href="#">服装衣物</a>
+                    <a href="#">服装衣物</a>
+                    <a href="#">服装衣物</a>
+                </div>
+                <div class="collapsed">
+                    <span id="menuSpan">教学书籍</span>
+                    <a href="#">教学书籍</a>
+                    <a href="#">教学书籍</a>
+                    <a href="#">教学书籍</a>
+                    <a href="#">教学书籍</a>
+                </div>
+            </div>
         </b-left>
     </a-layout>
 </template>
@@ -51,10 +51,10 @@ export default {
 
 
 <style>
-*{
-    margin: 0;
-    padding: 0;
-}
+    *{
+        margin: 0;
+        padding: 0;
+    }
     .layout .left {
         width: 10%;
     }

@@ -9,10 +9,10 @@
     <div class="header-middle">
       <ul>
         <li>
-          <a href="#">首页</a>
+          <router-link to="/">首页</router-link>
         </li>
         <li>
-          <a href="#">二手市场</a>
+          <router-link to="/trading">二手市场</router-link>
         </li>
         <li>
           <a href="#">开发</a>
@@ -33,6 +33,7 @@
       </div>
       <ul>
         <li>
+          <router-link to="/user">自己</router-link>
           <a id="ios" href="#">登录</a>
         </li>
         <li>

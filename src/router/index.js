@@ -7,14 +7,21 @@ import Test from '@/views/test.vue'
 
 import Login from '@/views/Login'
 
-import Trading from '@/views/trading'       // 物品交易
-import Test2 from '@/views/community/Community'   // 社团
+import Trading from '@/views/trading'             // 物品交易
+import Test2 from '@/views/community'   // 社团
+import User from '@/views/user'                   // 用户详情
 
 import store from '@/store/index'
+
+import tets2 from '@/views/test2'
+import { userInfo } from 'os';
+import { comment } from '_postcss@6.0.23@postcss';
+import { isError } from 'util';
 
 Vue.use(Router)
 
 let router = new Router({
+  // mode: 'history',//去掉#，mode
   routes: [
     {
       path: '/',
@@ -44,10 +51,30 @@ let router = new Router({
       ]
     },
 
+    // 用户详情
+    {
+      path: '/user',
+      name: 'user',
+      meta: {
+        requireAuth: true,
+      },
+      component: User,
+      children: [
+        {
+          path: '',
+          component: User.Detail,
+        },
+        {
+          path: 'manage',
+          component: User.Manage
+        }
+      ]
+
+    },
     // 交易物品模块
     {
-      path: '/test1',
-      name: 'test1',
+      path: '/trading',
+      name: 'trading',
       meta: {
         requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
       },
@@ -59,7 +86,7 @@ let router = new Router({
           component: Trading.Digital
         },
         {
-          path: 'life',
+          path: '',
           component: Trading.Life
         }
       ]
@@ -87,6 +114,12 @@ let router = new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+
+    {
+      path: '/a',
+      name: 'a',
+      component: tets2
     }
     // {
     //   path: '/mes',
@@ -108,17 +141,17 @@ let router = new Router({
 // 拦截请求，用户权限判断
 router.beforeEach((to, from, next) => {
   if (to.matched.some(r => r.meta.requireAuth)) {
-      if (store.state.token == '1') {
-      // if(localStorage.getItem('token') === '' || localStorage.getItem('token') === 'null'){
-          next();
-          return;
-      }
-      else {
+      // if (store.state.token == '1') {
+      if(localStorage.getItem('token') == '' || localStorage.getItem('token') == null){
           next({
               
             path: '/login',
             query: {redirect: to.fullPath}
         });
+          return
+      }
+      else {
+          next();
           return
       }
   }
