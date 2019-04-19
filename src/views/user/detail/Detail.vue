@@ -125,7 +125,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
     .detail_header { 
         height: 300px;
     }

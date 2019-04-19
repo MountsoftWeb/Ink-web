@@ -12,7 +12,7 @@
             <router-view></router-view>
 
             <!-- 底部信息 -->
-             <c-footer></c-footer>
+            <c-footer></c-footer>
         
         </div>
 
@@ -45,7 +45,7 @@
     
 </script>
 
-<style>
+<style >
     .content {
         top: 60px;
         height: calc(100% - 60px);

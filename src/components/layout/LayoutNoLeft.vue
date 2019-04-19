@@ -1,19 +1,19 @@
 <template>
     <!-- 无左导航条布局 -->
-    <div class="layout">
+    <div class="layout_no_left">
         <!-- 头部导航 -->
         <a-header></a-header>
 
         <!-- 展示路由 -->
-        <div class="content">
+        <div class="content_no_left">
             <router-view></router-view>
-
             <!-- 底部信息 -->
-             <c-footer></c-footer>
-        
+            <div class="content_no_left_footer">
+                <c-footer></c-footer>
+            </div>
         </div>
 
-        
+         
         
     </div>
    
@@ -42,20 +42,20 @@
     
 </script>
 
-<style>
-    .content {
+<style scoped>
+    .content_no_left {
         top: 60px;
         height: calc(100% - 60px);
-   
-        padding: 10px;
+        width: 100%;
         position: absolute;
         overflow: auto;
         
     }
-    .layout .content{
-        /* margin-left: 180px;
-        width: calc(99% - 180px); */
-        width: 99%;
+    
+    .content_no_left_footer {
+        width: 100%;
+        /* position: absolute; */
+        /* bottom: 0; */
     }
   
 </style>

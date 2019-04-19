@@ -24,7 +24,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .id {
         font-size: 200px;
     }

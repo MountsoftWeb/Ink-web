@@ -27,12 +27,12 @@ let router = new Router({
       path: '/',
       name: 'Layout',
       component: LayoutNoLeft,
-      // children:[
-      //   {
-      //     path: 'test',
-      //     component: HelloWorld
-      //   }
-      // ]
+      children:[
+        {
+          path: 'test',
+          component: HelloWorld
+        }
+      ]
     },
 
     {
@@ -88,6 +88,10 @@ let router = new Router({
         {
           path: '',
           component: Trading.Life
+        },
+        {
+          path: 'life',
+          component: HelloWorld
         }
       ]
     },
