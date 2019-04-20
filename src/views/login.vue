@@ -1,26 +1,43 @@
 <template>
     <!-- 登陆注册 -->
     <div class="loyout_login">
-        <div class="layout_login_form">
+        <!-- <div class="layout_login_form"> -->
             <h1>Mountsoft Ink</h1>
             <!-- 展示二维码 -->
-            <div class="form_img">
+            <div class="layout_img">
                 <img :src="wePicture">
             </div>
             <!-- 表单提交 -->
             <div class="form_login">
-                <div class="form_input">
+
+                <div class="form_register_login">
+                    <ul>
+                        <li class="form_btn_register" @click="register">注册</li>
+                        <li class="form_btn_login" @click="login">登录</li>
+                    </ul>
+                </div>
+                <!-- 注册 -->
+                <div class="form_input" v-if="showRegister">
                         <input type="text" v-model.trim="loginData.username" name="username" placeholder="用户名">
                 
                         <input type="password" v-model.trim="loginData.password" name="password" placeholder="密码">
+                        <div class="form_button">
+                            <input type="button" value="注册" v-on:click="registerBtn">
+                        </div>
                 </div>
-                <div class="form_button">
-                        <input type="button" value="登录" v-on:click="submit">
+                <!-- 登录 -->
+                <div class="form_input" v-if="showLogin">
+                    <input type="text" v-model.trim="loginData.username" name="username" placeholder="login">
                 
-                        <input type="button" value="退出" v-on:click="logout">
+                    <input type="password" v-model.trim="loginData.password" name="password" placeholder="密码">
+                    <div class="form_button">
+                        <input type="button" value="登录" v-on:click="loginBtn">
+                    </div>
                 </div>
+
+                
             </div>
-        </div>
+        <!-- </div> -->
     </div>
     
 </template>
@@ -28,9 +45,11 @@
 <script>
   export default {
     // name: 'HelloWorld',
+    
     data () {
       return {
-        // msg: 'Welcome to Ink!',
+        showLogin: true,
+        showRegister: false,
         loginData: {
             username: '',
             password: '',
@@ -40,11 +59,11 @@
     },
     methods: {
         // 登录
-        submit: function () {
+        loginBtn: function () {
             this.$store.dispatch('getLogin',JSON.stringify(this.loginData))
         },
         // 退出
-        logout: function() {
+        registerBtn: function() {
             alert(localStorage.getItem('token'))
 
             this.$store.dispatch('logOut', '').then(() => {
@@ -54,6 +73,22 @@
             alert(localStorage.getItem('token'))
             // alert(this.$store.state.token)
         },
+        // 登录 注册 div 切换
+        register() {
+            // console.log(this)
+            // alert(1)
+            this.showLogin = false
+            this.showRegister = true
+            // this.$refs.btn = "fs"
+            //  = "ds"
+        },
+        login() {
+            // alert(2);
+            this.showLogin = true
+            this.showRegister = false
+            // register = false;
+        },
+        
 
     },
     // mounted() {
@@ -84,56 +119,69 @@
         margin: 0;
         padding: 0;
     }
-    .layout_login {
-        width: 100%;
-        height: 100%;
+    .loyout_login {
+        height: 800px;
+        width: 1002px;
+        margin: 124px auto 0;
+        margin-top: 124px;
+        margin-right: auto;
+        margin-bottom: 0px;
+        margin-left: auto;
+        
     }
-    .layout_login_form {
-        width: 60%;
-        height: 50%;
-        text-align: center;
-        margin: 0 auto;
-        position: absolute;
-        left: 15%;
-        top: 20%;
-        /* margin-left: -150px; */
-        /* margin-top:-100px; */
-    }
-    .layout_login_form h1{
-        position: absolute;
-        right: 16%;
-        top: 20%;
-    }
-    .form_login {
-        /* margin: 0 auto; */
-        width: 30%;
-        right: 10%;
-        position: absolute;
-        right: 10%;
-        top: 30%;
-    }
-    /* 图片属性 */
-    .form_img img{
-        position: absolute;
+    .layout_img img{
+        float: left;
         width: 200px;
         height: 300px;
-        top: 20%;
-        left: 30%;
+        top: 50px;
+        left: 5%;
+        position: relative;
+        
+    }
+    .form_login {
+        float: right;
+        position: relative;
+        top: 50px;
+        right: 15%;
+        padding: 10px;
+        width: 300px;
+        height: 500px;
+        
+    }
+    .form_register_login {
+        width: 300px;
+        height: 35px;
+    }
+    .form_register_login ul li{
+        list-style-type: none;
+        float: left;
+        cursor: pointer;
+    }
+    
+    .form_btn_register {
+        width: 150px;
+        text-align: center;
+    }
+    .form_btn_login {
+        width: 150px;
+        text-align: center;
     }
     /* .form_login input:nth-of-type(){ */
     /* 输入框属性 */
     .form_input input{
         outline: none;
-        margin: 10px;
-        width: 70%;
+        /* padding: 10px; */
+        margin: 5px 0 5px 0;
+        width: 98%;
         height: 30px;
         border-radius: 10px;
     }
+    
     /* button 属性 */
     .form_button input{
         outline: none;
         margin: 2px;
-        width: 33%;
+        width: 98%;
         height: 27px;
     }
 

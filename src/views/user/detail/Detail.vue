@@ -14,25 +14,33 @@
                     <table >
                         <tr>
                             <td>用户名</td>
-                            <td>1</td>
+                            <td>{{username}}</td>
                         </tr>
                         <tr>
                             <td>性别</td>
-                            <td>1</td>
+                            <td>
+                                 {{sex}}
+                            </td>
 
                         </tr>
                         
                         <tr>
                             <td>学校</td>
-                            <td>****</td>
+                            <td>
+                                {{school}}
+                            </td>
                         </tr>
                         <tr>
                             <td>专业</td>
-                            <td>****</td>
+                            <td>
+                                <span>{{major}}</span>
+                            </td>
                         </tr>
                         <tr>
                             <td>发布数量</td>
-                            <td>1</td>
+                            <td>
+
+                            </td>
 
                         </tr>
                 </table>
@@ -42,11 +50,15 @@
                     <table>
                         <tr>
                             <td>手机号</td>
-                            <td>1</td>
+                            <td>
+                                
+                            </td>
                         </tr>
                         <tr>
                             <td>邮箱</td>
-                            <td>1</td>
+                            <td>
+                                
+                            </td>
 
                         </tr>
                     </table>
@@ -55,19 +67,21 @@
             </div>
         </div>
         <!-- 物品展示 -->
-        <div class="detail_content">
+        <div v-for="object in items" class="detail_content">
             <div class="detail_content_main">               
                 <ul>
                     <li><img src="../carlos.jpg"></li>
-                    <li>详情</li>
-                    <li>价格</li>
-                    <li>联系卖家</li>
-                    <li><a href="#">删除</a></li>
+                    <!-- <li><img :src="{{object.picture}}"></li> -->
+                    <li>详情{{object.id}}</li>
+                    <li>价格{{object.id}}</li>
+                    <li>联系卖家{{object.message}}</li>
+                    <li>
+                        <input id="delete" type="button" @click="deleteId(object.id)" value="删除"></input>
+                    </li>
                 </ul>    
             </div>
             
         </div>
-        
     </div>
 </template>
 
@@ -75,6 +89,17 @@
 export default {
     data () {
         return{
+            items: {
+                a: {
+                    id: 0,
+                    message: "ds"
+                },
+                b: {
+                    id: 1,
+                    message: "ddsds"
+                }
+            },
+            text: 0,
             message: '点击图片修改',
             imgPath: '/Users/carlos/Documents/素材/社交二维码/carlos.jpg'
         }
@@ -108,26 +133,27 @@ export default {
         update: function(){
             document.getElementById('updateFile').click()
         },
+        deleteId(a) {
+            alert(a)
+        }
     },
     // 页面加载执行
     mounted() {
-        this.axios({
-            method: "get",
-            url: "/hello/test/getPicture"
-        }).then(response => {
-            if(response.data.code == 200){
-                this.imgPath = response.data.message
-            }else{
 
-            }
-        })
+        // this.$store.dispatch('getDetail')
+
+        
     }
 }
 </script>
 
-<style >
+<style>
+    .detail_container {
+        padding: 10px;
+    }
     .detail_header { 
         height: 300px;
+        background-color: #F5F6F7;
     }
     .detail_content {
         width: 90%;
@@ -135,7 +161,7 @@ export default {
         text-align: center;
     }
     .detail_img {
-        position: absolute;
+        position: relative;
         width: 150px;
         height: 170px;
         top: 7%;
@@ -154,10 +180,16 @@ export default {
     }
     .detail_data {
         position: absolute;
-        width: 70%;
-        height: 300px;
-        right: 10%;
-        /* background-color: black; */
+        top: 20px;
+        width: 50%;
+        height: 250px;
+        left: 25%;
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+    }
+    .detail_data:hover {
+        border-color: rgb(177, 38, 38);
+        box-shadow: 0 0 15px rgb(219, 221, 223);
     }
     .detail_data .detail_data_left {
         padding-top: 5%;

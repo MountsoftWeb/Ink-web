@@ -29,6 +29,7 @@
         overflow: auto;
         font-size: 14px;
         background-color: rgb(74, 74, 74)
+        
     }
     .left ul{
         list-style: none;

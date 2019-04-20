@@ -9,40 +9,53 @@ import router from './../router'
 
 export default {
     // 登录 isLogin : 1
-  getLogin({commit, state}, loginData){
-    let success=(response)=>{
-        alert(response.data.msg);
-    }
-    axios({      
-        method: "post",
-        url: "/hello/login",
-        data: loginData,
-        callback: success
-    })
-    .then
-    (response => {
-        console.log(response);
-        if(response.data.code == 200){          // 登录成功，将 isLogin 赋值为 1
-            alert(response.data.token);
-            // alert(response.data.token);
-            // alert(response.data.data);
-            commit(LOGIN, response.data.token);
-            alert(localStorage.getItem('token'))
-
-            router.push({ path: '/' }) 
-        }else{
-            alert(response.data.message);
-            // this.$router.push({ path: '/' }) 
+    getLogin({commit, state}, loginData){
+        let success=(response)=>{
+            alert(response.data.msg);
         }
-    })
-    .catch(
-        function(error) {
-            alter(error);
-        }.bind(this)
-    ); 
-  },
-  // 退出 isLogin : 0
-  logOut({commit}, data){       // 退出用户，将 isLogin 赋值为 0
+        axios({      
+            method: "post",
+            url: "/hello/login",
+            data: loginData,
+            callback: success
+        })
+        .then
+        (response => {
+            console.log(response);
+            if(response.data.code == 200){          // 登录成功，将 isLogin 赋值为 1
+                alert(response.data.token);
+                // alert(response.data.token);
+                // alert(response.data.data);
+                commit(LOGIN, response.data.token);
+                alert(localStorage.getItem('token'))
+
+                router.push({ path: '/' }) 
+            }else{
+                alert(response.data.message);
+                // this.$router.push({ path: '/' }) 
+            }
+        })
+        .catch(
+            function(error) {
+                alter(error);
+            }.bind(this)
+        ); 
+    },
+    // 退出 isLogin : 0
+    logOut({commit}, data){       // 退出用户，将 isLogin 赋值为 0
       commit(LOGOUT, data)
-    }
+    },
+    // getDetail({commit, data}){
+    //     axios({
+    //         method: "Post",
+    //         // url: "/hello/test/getPicture"
+    //         url: "/hello/test/getDetail"
+    //     }).then(response => {
+    //         if(response.data.code == 200){
+    //             commit(GETDETAIL, response.data.data);
+    //         }else{
+
+    //         }
+    //     })
+    // }
 }

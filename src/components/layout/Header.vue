@@ -84,7 +84,8 @@ body {
   position: fixed;
   width: 100%;
   height: 60px;
-  background-color: rgb(49, 47, 47);
+  /* background-color: rgb(49, 47, 47); */
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
   /* border-bottom: 1px solid #dfe4ed; */
 }
 .header > .header-left {

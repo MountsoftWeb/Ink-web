@@ -13,5 +13,8 @@ export default {
     [LOGOUT] (state, data) {
         state.token = data;
         localStorage.removeItem('token');
-    }
+    },
+    // [GETDETAIL] (state, data) {
+    //     state.user = data;
+    // }
 }

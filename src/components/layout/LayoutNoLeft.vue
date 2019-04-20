@@ -8,9 +8,9 @@
         <div class="content_no_left">
             <router-view></router-view>
             <!-- 底部信息 -->
-            <div class="content_no_left_footer">
+            <!-- <div class="content_no_left_footer"> -->
                 <c-footer></c-footer>
-            </div>
+            <!-- </div> -->
         </div>
 
          
@@ -52,10 +52,10 @@
         
     }
     
-    .content_no_left_footer {
+    /* .content_no_left_footer {
         width: 100%;
-        /* position: absolute; */
-        /* bottom: 0; */
-    }
+        position: absolute;
+        bottom: 0;
+    } */
   
 </style>

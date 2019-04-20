@@ -50,14 +50,15 @@
         top: 60px;
         height: calc(100% - 60px);
    
-        padding: 10px;
+        /* padding: 8px; */
         position: absolute;
         overflow: auto;
+        width: 100%;
         
     }
     .layout .content{
-        margin-left: 180px;
-        width: calc(99% - 180px);
+        margin-left: 185px;
+        width: calc(100% - 185px);
     }
   
 </style>
