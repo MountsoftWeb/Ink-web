@@ -2,7 +2,8 @@
 
 import {
     LOGIN,
-    LOGOUT
+    LOGOUT,
+    GETDETAIL
 } from './mutation-types'
 
 export default {
@@ -14,7 +15,8 @@ export default {
         state.token = data;
         localStorage.removeItem('token');
     },
-    // [GETDETAIL] (state, data) {
-    //     state.user = data;
-    // }
+    [GETDETAIL] (state, data) {
+        state.user = data;
+        // alert(data.username)
+    }
 }

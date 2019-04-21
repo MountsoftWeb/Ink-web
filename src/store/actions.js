@@ -2,7 +2,8 @@
 
 import {
     LOGIN,
-    LOGOUT
+    LOGOUT,
+    GETDETAIL
 } from './mutation-types'
 import axios from '../axios/http'
 import router from './../router'
@@ -45,17 +46,17 @@ export default {
     logOut({commit}, data){       // 退出用户，将 isLogin 赋值为 0
       commit(LOGOUT, data)
     },
-    // getDetail({commit, data}){
-    //     axios({
-    //         method: "Post",
-    //         // url: "/hello/test/getPicture"
-    //         url: "/hello/test/getDetail"
-    //     }).then(response => {
-    //         if(response.data.code == 200){
-    //             commit(GETDETAIL, response.data.data);
-    //         }else{
+    getDetail({commit, data}){
+        axios({
+            method: "Post",
+            // url: "/hello/test/getPicture"
+            url: "/hello/test/getDetail"
+        }).then(response => {
+            if(response.data.code == 200){
+                commit(GETDETAIL, response.data.data);
+            }else{
 
-    //         }
-    //     })
-    // }
+            }
+        })
+    }
 }

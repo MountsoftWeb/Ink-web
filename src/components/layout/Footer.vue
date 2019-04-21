@@ -1,6 +1,27 @@
 <template>
     <div class="footer">
-        footer
+        <div class="footer_content">
+            <p>
+                <span>Mountsoft</span>
+                <b>|</b>
+                <span>关于我们</span>
+                <b>|</b>
+                <span>联系我们</span>
+                <b>|</b>
+                <span>CarlosHaoxj</span>
+                <b>|</b>
+                <span>加入我们</span>
+                <b>|</b>
+                <span>QQ 群</span>
+            </p>
+        </div>
+        <div class="footer_main">
+            <p>
+                <span>&copy; 2019 Mountsoft</span>
+                <b>|</b>
+                
+            </p>
+        </div>
     </div>    
 </template>
 
@@ -14,10 +35,14 @@
         /* margin-top: 50%; */
         /* background-color: aqua; */
         background-image: linear-gradient(to right, #434343 0%, black 100%);
-        height: 280px;
+        height: 150px;
         width: 100%;
         position: absolute;
+        color: white;
         /* bottom: 0; */
         
+    }
+    .footer_content {
+        margin: 30px;
     }
 </style>

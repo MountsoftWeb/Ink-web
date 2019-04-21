@@ -14,12 +14,12 @@
                     <table >
                         <tr>
                             <td>用户名</td>
-                            <td>{{username}}</td>
+                            <td>{{user.username}}</td>
                         </tr>
                         <tr>
                             <td>性别</td>
                             <td>
-                                 {{sex}}
+                                 {{user.sex}}
                             </td>
 
                         </tr>
@@ -27,13 +27,13 @@
                         <tr>
                             <td>学校</td>
                             <td>
-                                {{school}}
+                                {{user.school}}
                             </td>
                         </tr>
                         <tr>
                             <td>专业</td>
                             <td>
-                                <span>{{major}}</span>
+                                <span>{{user.major}}</span>
                             </td>
                         </tr>
                         <tr>
@@ -72,7 +72,8 @@
                 <ul>
                     <li><img src="../carlos.jpg"></li>
                     <!-- <li><img :src="{{object.picture}}"></li> -->
-                    <li>详情{{object.id}}</li>
+                    <li>详情{{object.message}}</li>
+                    <li>价格{{object.id}}</li>
                     <li>价格{{object.id}}</li>
                     <li>联系卖家{{object.message}}</li>
                     <li>
@@ -86,7 +87,9 @@
 </template>
 
 <script>
+import { mapState } from "vuex"
 export default {
+
     data () {
         return{
             items: {
@@ -96,7 +99,7 @@ export default {
                 },
                 b: {
                     id: 1,
-                    message: "ddsds"
+                    message: "ddsdsdd"
                 }
             },
             text: 0,
@@ -139,26 +142,32 @@ export default {
     },
     // 页面加载执行
     mounted() {
-
-        // this.$store.dispatch('getDetail')
-
+            this.$store.dispatch('getDetail')
         
-    }
+    },
+    computed: {
+        ...mapState(['user'])
+  }
+
 }
 </script>
 
 <style>
     .detail_container {
         padding: 10px;
+        background-color: #F5F6F7;
     }
     .detail_header { 
         height: 300px;
         background-color: #F5F6F7;
     }
     .detail_content {
-        width: 90%;
-        margin: 0 auto;
-        text-align: center;
+        background-color: white;
+        border: solid black;
+        width: 1400px;
+        margin: 10px auto;
+        
+        /* text-align: center; */
     }
     .detail_img {
         position: relative;
@@ -241,9 +250,12 @@ export default {
         height: 100px;
         /* position: absolute; */
         padding: 10px;
+        
     }
     .detail_content_main ul {
         list-style-type: none;
+        height: 100px;
+        
     }
     .detail_content_main ul li {
         float: left;
@@ -252,20 +264,32 @@ export default {
         letter-spacing: normal;
         word-spacing: normal;
     }
+    .detail_content_main ul li:nth-child(1){
+        width: 100px;
+    }
     .detail_content_main ul li:nth-child(2){
-        padding-left: 150px;
+        width: 490px;
+        padding-left: 20px;
+        /* padding-left: 150px; */
     }
     .detail_content_main ul li:nth-child(3){
-        padding-left: 550px;
+        width: 340px;
+        /* padding-left: 550px; */
     }
     .detail_content_main ul li:nth-child(4){
-        padding-left: 200px;
+        width: 120px;
+        /* padding-left: 550px; */
     }
     .detail_content_main ul li:nth-child(5){
-        padding-left: 200px;
+        width: 200px;
+        /* padding-left: 200px; */
+    }
+    .detail_content_main ul li:nth-child(6){
+        width: 100px;
+        /* padding-left: 200px; */
     }
     .detail_content_main ul li img {
-        margin-left: 50%;
+        /* margin-left: 50%; */
         width: 100px;
         height: 100px;
     }
