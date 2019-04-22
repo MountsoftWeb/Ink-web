@@ -1,12 +1,14 @@
 <template>
+    <div class="a">
+        
     <!-- 登陆注册 -->
     <div class="loyout_login">
         <!-- <div class="layout_login_form"> -->
             <h1>Mountsoft Ink</h1>
             <!-- 展示二维码 -->
-            <div class="layout_img">
+            <!-- <div class="layout_img">
                 <img :src="wePicture">
-            </div>
+            </div> -->
             <!-- 表单提交 -->
             <div class="form_login">
 
@@ -38,6 +40,7 @@
                 
             </div>
         <!-- </div> -->
+    </div>
     </div>
     
 </template>
@@ -118,16 +121,30 @@
     *{
         margin: 0;
         padding: 0;
+        
+    }
+    body {
+         background-image: url('../assets/img/Ink.png');
+        background-size: 100% 100%;
+        background-repeat:no-repeat;
     }
     .loyout_login {
-        height: 800px;
-        width: 1002px;
+       
+
+        height: 450px;
+        width: 470px;
         margin: 124px auto 0;
-        margin-top: 124px;
-        margin-right: auto;
+        margin-top: 200px;
+        margin-right: 100px;
         margin-bottom: 0px;
         margin-left: auto;
-        
+        /* border: solid; */
+        box-shadow: 2px 4px 6px #000;
+        border-radius: 20px;
+    }
+    .loyout_login h1 {
+        text-align: center;
+        padding-top: 30px;
     }
     .layout_img img{
         float: left;
@@ -145,7 +162,7 @@
         right: 15%;
         padding: 10px;
         width: 300px;
-        height: 500px;
+        height: 300px;
         
     }
     .form_register_login {

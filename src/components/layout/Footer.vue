@@ -17,7 +17,7 @@
         </div>
         <div class="footer_main">
             <p>
-                <span>&copy; 2019 Mountsoft</span>
+                <span>Copyright &copy; 2019 Mountsoft</span>
                 <b>|</b>
                 
             </p>
