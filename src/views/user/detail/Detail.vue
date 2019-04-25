@@ -142,7 +142,7 @@ export default {
     },
     // 页面加载执行
     mounted() {
-            this.$store.dispatch('getDetail')
+        this.$store.dispatch('getDetail')
         
     },
     computed: {

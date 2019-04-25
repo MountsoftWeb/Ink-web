@@ -14,9 +14,7 @@ import User from '@/views/user'                   // 用户详情
 import store from '@/store/index'
 
 import tets2 from '@/views/test2'
-import { userInfo } from 'os';
-import { comment } from '_postcss@6.0.23@postcss';
-import { isError } from 'util';
+
 
 Vue.use(Router)
 
@@ -152,7 +150,7 @@ router.beforeEach((to, from, next) => {
             path: '/login',
             query: {redirect: to.fullPath}
         });
-          return
+        return
       }
       else {
           next();
