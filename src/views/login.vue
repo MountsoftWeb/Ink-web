@@ -5,6 +5,8 @@
         <div class="loyout_login">
             <!-- <div class="layout_login_form"> -->
                 <h1>Mountsoft Ink</h1>
+               
+
                 <!-- 展示二维码 -->
                 <!-- <div class="layout_img">
                     <img :src="wePicture">
@@ -18,13 +20,16 @@
                             <li class="form_btn_login" @click="login">登录</li>
                         </ul>
                     </div>
+                    <div class="message">
+                        &nbsp;<span>{{message}}</span>
+                    </div>
                     <!-- 注册 -->
                     <div class="form_input" v-if="showRegister">
-                            <input type="text" v-model.trim="registerData.username" name="username" placeholder="用户名">
+                            <input type="text" v-model.trim="registerData.username" name="username" placeholder="用户名" @blur="checkUser">
                     
-                            <input type="password" v-model.trim="registerData.password" name="password" placeholder="密码">
+                            <input type="password" v-model.trim="registerData.password" name="password" placeholder="密码" @focus="checkUser_password">
                             <div class="form_button">
-                                <input type="button" value="注册" v-on:click="registerBtn">
+                                <input :disabled="register_Button" type="button" value="注册" v-on:click="registerBtn">
                             </div>
                     </div>
                     <!-- 登录 -->
@@ -33,7 +38,7 @@
                     
                         <input type="password" v-model.trim="loginData.password" name="password" placeholder="密码">
                         <div class="form_button">
-                            <input type="button" value="登录" v-on:click="loginBtn">
+                            <input :disabled="login_button" type="button" value="登录" v-on:click="loginBtn">
                         </div>
                     </div>
 
@@ -68,19 +73,22 @@
     
     data () {
       return {
-        showLogin: true,
-        showRegister: false,
-        loginData: {
-            username: '',
-            password: '',
-            logintype: 'phone'
-        },
-        registerData: {
-            username: '',
-            password: '',
-            logintype: 'phone'
+            message: '',
+            register_Button: true,
+            login_button: false,
+            showLogin: true,
+            showRegister: false,
+            loginData: {
+                username: '',
+                password: '',
+                logintype: 'phone'
+            },
+            registerData: {
+                username: '',
+                password: '',
+                logintype: 'phone'
+            }
         }
-      }
     },
     methods: {
         // 登录
@@ -107,6 +115,39 @@
                 }
             })
         },
+        checkUser: function() {
+            if (!(/^1[34578]\d{9}$/.test(this.registerData.username))) {
+                console.log("电话号码格式错误");
+                this.message = "输入正确手机号"
+                this.register_Button = true
+            }else{
+                // this.register_Button = true
+                this.axios({
+                    method: "post",
+                    url: "/hello/checkUser",
+                    data: this.registerData,
+                }).then(response => {
+                    console.log(response)
+                    if(response.data.code == 200){
+                        this.message = "手机号可使用"
+                    }else{
+                        this.message = "更换手机号"
+                        
+                    }
+                })
+            }
+        },
+        checkUser_password: function() {          
+            if (this.registerData.password.length < 10 && this.registerData.username.trim().length != 0){
+                this.register_Button = false
+            // alert(this.registerData.password.length)
+
+            }else{
+                // alert("no")
+                this.message = "填写正确手机号"
+                this.register_Button = true
+            }
+        },
             // alert(localStorage.getItem('token'))
 
             // this.$store.dispatch('logOut', '').then(() => {
@@ -122,6 +163,7 @@
             // alert(1)
             this.showLogin = false
             this.showRegister = true
+            this.message = ""
             // this.$refs.btn = "fs"
             //  = "ds"
         },
@@ -129,6 +171,7 @@
             // alert(2);
             this.showLogin = true
             this.showRegister = false
+            this.message = ""
             // register = false;
         },
         
@@ -209,6 +252,9 @@
         position: relative;
         
     }
+    .message span{
+        color: red;
+    }
     .form_login {
         float: right;
         position: relative;
@@ -218,7 +264,7 @@
         width: 300px;
         height: 300px;
         /* 透明度设置 0 ～ 1 */
-        opacity: 0.75;   
+        opacity: 0.85;   
 
         
     }

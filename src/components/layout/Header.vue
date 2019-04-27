@@ -37,7 +37,7 @@
             <router-link to="/login" class="login">登录</router-link>
         </li>
         <li>
-          <router-link to="" @click="logout">退出</router-link>
+          <p @click="logout">退出</p>
           <!-- <span @click="logout">退出</span> -->
         </li>
       </ul>

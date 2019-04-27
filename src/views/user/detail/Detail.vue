@@ -2,68 +2,44 @@
     <div class="detail_container">
         <!-- 用户详细信息 -->
         <div class="detail_header">
-            <div class="detail_img">
-                <img id="picture" title="点击修改" src="../carlos.jpg" @click="update"/>
-                <input id="updateFile" type="file" ref="new_image" @change="updatePicture"><br>
-                <!-- <span style="text-align: center;">点击修改</span> -->
-                <span>{{message}}</span>
-            </div>
+            <div class="detail_data_left">
 
-            <div class="detail_data">
-                <div class="detail_data_left">
-                    <table >
-                        <tr>
-                            <td>用户名</td>
-                            <td>{{user.username}}</td>
-                        </tr>
-                        <tr>
-                            <td>性别</td>
-                            <td>
-                                 {{user.sex}}
-                            </td>
-
-                        </tr>
-                        
-                        <tr>
-                            <td>学校</td>
-                            <td>
-                                {{user.school}}
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>专业</td>
-                            <td>
-                                <span>{{user.major}}</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>发布数量</td>
-                            <td>
-
-                            </td>
-
-                        </tr>
-                </table>
+                <div class="detail_img">
+                    <img id="picture" title="点击修改" src="../carlos.jpg" @click="update"/>
+                    <input id="updateFile" type="file" ref="new_image" @change="updatePicture"><br>
+                    <!-- <span style="text-align: center;">点击修改</span> -->
+                    <span>{{message}}</span>
+                    <ul>
+                        <li>用户名:{{user.username}}</li>
+                        <li>性别:{{user.sex}}</li>
+                    </ul>
                 </div>
 
-                <div class="detail_data_right">
-                    <table>
-                        <tr>
-                            <td>手机号</td>
-                            <td>
-                                
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>邮箱</td>
-                            <td>
-                                
-                            </td>
-
-                        </tr>
-                    </table>
+                <div class="detail_data_L">
+                    <ul>
+                        <li>学校:{{user.school}}</li>
+                        <li>专业:{{user.major}}</li>
+                        <li>手机号:{{user.phone}}</li>
+                        <li>邮箱:{{user.email}}</li>
+                        <li>个人简介:</li>
+                    </ul>
+                           
                 </div>
+
+                <!-- <div class="detail_data_right">
+                   
+                </div> -->
                 
+            </div>
+            <div class="detail_data_right">
+                <div class="detail_data_R">
+                    <ul>
+                        <li>发布数量</li>
+                        <li>收藏数量</li>
+                        <li>消息</li>
+                        <li>成功交易</li>
+                    </ul>
+                </div>
             </div>
         </div>
         <!-- 物品展示 -->
@@ -170,49 +146,82 @@ export default {
         /* text-align: center; */
     }
     .detail_img {
-        position: relative;
-        width: 150px;
-        height: 170px;
+        position: absolute;
+        width: 110px;
+        height: 125px;
         top: 7%;
-        left: 10%;
+        left: 6%;
         /* background-color: black; */
+    }
+    .detail_img {
+        font-size: 12px;
+    }
+    .detail_img ul {
+        list-style-type: none;
+        font-size: 16px;
+        color: black;
     }
     #picture {
         cursor: pointer;
-        height: 150px;
-        width: 150px;
+        height: 100px;
+        width: 100px;
         border-radius: 50px;  
     }
     #updateFile {
         display: none;
         /* opacity:0; */
     }
-    .detail_data {
+    .detail_data_left {
         position: absolute;
         top: 20px;
-        width: 50%;
+        width: 35%;
         height: 250px;
-        left: 25%;
+        left: 12%;
         background-color: rgb(255, 255, 255);
         border-radius: 10px;
     }
-    .detail_data:hover {
+    .detail_data_left:hover {
         border-color: rgb(177, 38, 38);
         box-shadow: 0 0 15px rgb(219, 221, 223);
     }
-    .detail_data .detail_data_left {
+    .detail_data_left .detail_data_L {
         padding-top: 5%;
-
-        width: 50%;
+        width: 30%;
         float: left;
+        position: absolute;
+        left: 45%;
         /* display: inline; */
     }
-    .detail_data .detail_data_right {
-        padding-top: 5%;
-        width: 50%;
-        float: left;
+    .detail_data_L ul li {
+        list-style-type: none;
+        font-size: 16px;
+        color: black;
     }
-    table {
+    .detail_data_right {
+        position: absolute;
+        top: 20px;
+        width: 35%;
+        height: 250px;
+        right: 12%;
+        background-color: rgb(255, 255, 255);
+        border-radius: 10px;
+    }
+    .detail_data_right:hover {
+        border-color: rgb(177, 38, 38);
+        box-shadow: 0 0 15px rgb(219, 221, 223);
+    }
+    .detail_data_right .detail_data_R {
+        padding-top: 5%;
+        width: 30%;
+        float: left;
+        position: absolute;
+        right: 60%;
+        /* display: inline; */
+    }
+    .detail_data_R ul {
+        list-style-type: none;
+    }
+    /* table {
         width: 50%;
         text-align: center;
         border-collapse: collapse; 
@@ -222,13 +231,13 @@ export default {
     table td{
         word-break: break-all;
         word-wrap: break-word;
-        /* border-right: 1px solid #939598; 
-        border-bottom: 1px solid #939598; */
+        border-right: 1px solid #939598; 
+        border-bottom: 1px solid #939598;
         font: 500 20px Arial;
         font-family: Microsoft YaHei;
         color: black;
         height: 30px;
-    }
+    } */
 
     /* ===================== 发布收藏导航条 ================== */
     .detail_content_header {
