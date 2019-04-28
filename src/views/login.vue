@@ -6,11 +6,6 @@
             <!-- <div class="layout_login_form"> -->
                 <h1>Mountsoft Ink</h1>
                
-
-                <!-- 展示二维码 -->
-                <!-- <div class="layout_img">
-                    <img :src="wePicture">
-                </div> -->
                 <!-- 表单提交 -->
                 <div class="form_login">
 
@@ -25,18 +20,18 @@
                     </div>
                     <!-- 注册 -->
                     <div class="form_input" v-if="showRegister">
-                            <input type="text" v-model.trim="registerData.username" name="username" placeholder="用户名" @blur="checkUser">
+                            <input type="text" v-model.trim="registerData.username" name="username" placeholder="用户名" @blur="register_check_user">
                     
-                            <input type="password" v-model.trim="registerData.password" name="password" placeholder="密码" @focus="checkUser_password">
+                            <input type="password" v-model.trim="registerData.password" name="password" placeholder="密码" @focus="register_check_password">
                             <div class="form_button">
                                 <input :disabled="register_Button" type="button" value="注册" v-on:click="registerBtn">
                             </div>
                     </div>
                     <!-- 登录 -->
                     <div class="form_input" v-if="showLogin">
-                        <input type="text" v-model.trim="loginData.username" name="username" placeholder="login">
+                        <input type="text" v-model.trim="loginData.username" name="username" placeholder="login" @blur="login_check_user">
                     
-                        <input type="password" v-model.trim="loginData.password" name="password" placeholder="密码">
+                        <input type="password" v-model.trim="loginData.password" name="password" placeholder="密码" @focus="login_check_password">
                         <div class="form_button">
                             <input :disabled="login_button" type="button" value="登录" v-on:click="loginBtn">
                         </div>
@@ -55,7 +50,14 @@
 
                     <div class="from_footer">
                         <p>
-                            <span>Copyright &copy; 2019 Mountsoft</span>
+                            <span>Copyright &copy; 2019 Mountsoft</span><br>
+                            <span class="ICP">
+                                <!-- <a href="http://www.miitbeian.gov.cn"> -->
+                                    <li>
+                                        津ICP备19003477号
+                                    </li>
+                                <!-- </a> -->
+                            </span>
                         </p>
                     </div>
                 </div>
@@ -115,9 +117,9 @@
                 }
             })
         },
-        checkUser: function() {
+        register_check_user: function() {
             if (!(/^1[34578]\d{9}$/.test(this.registerData.username))) {
-                console.log("电话号码格式错误");
+                console.log("电话号码格式错误")
                 this.message = "输入正确手机号"
                 this.register_Button = true
             }else{
@@ -137,7 +139,7 @@
                 })
             }
         },
-        checkUser_password: function() {          
+        register_check_password: function() {          
             if (this.registerData.password.length < 10 && this.registerData.username.trim().length != 0){
                 this.register_Button = false
             // alert(this.registerData.password.length)
@@ -156,23 +158,38 @@
             // })
             // alert(localStorage.getItem('token'))
             // alert(this.$store.state.token)
-        
+        login_check_user: function() {
+            if (!(/^1[34578]\d{9}$/.test(this.loginData.username))) {
+                console.log("电话号码格式错误")
+                this.message = "输入正确手机号"
+                this.login_button = true
+            }else{
+                this.message = ""
+            }
+        },
+        login_check_password: function() {
+            // alert(this.loginData.password.length)
+             if (this.loginData.password.length < 10 && this.loginData.username.trim().length != 0){
+                this.login_button = false
+                this.message = ""
+            // alert(this.registerData.password.length)
+
+            }else{
+                // alert("no")
+                this.message = "密码范围 0 ～ 10"
+                this.login_button = true
+            }
+        },
         // 登录 注册 div 切换
         register() {
-            // console.log(this)
-            // alert(1)
             this.showLogin = false
             this.showRegister = true
             this.message = ""
-            // this.$refs.btn = "fs"
-            //  = "ds"
         },
         login() {
-            // alert(2);
             this.showLogin = true
             this.showRegister = false
             this.message = ""
-            // register = false;
         },
         
 
@@ -344,6 +361,13 @@
         color: white;
         font-weight: 900;
         text-align: center;
+    }
+    .ICP li {
+        list-style-type: none;
+        color: white;
+    }
+    .ICP a {
+         text-decoration: none
     }
     #saveImage{
         width: 100px;

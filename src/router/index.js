@@ -20,6 +20,7 @@ Vue.use(Router)
 
 let router = new Router({
   // mode: 'history',//去掉#，mode
+  // base: '/dist/',
   routes: [
     {
       path: '/',

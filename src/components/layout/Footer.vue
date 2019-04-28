@@ -19,6 +19,11 @@
             <p>
                 <span>Copyright &copy; 2019 Mountsoft</span>
                 <b>|</b>
+                <span class="ICP">
+                    <!-- <a href="http://www.miitbeian.gov.cn"> -->
+                            津ICP备19003477号
+                    <!-- </a> -->
+                </span>
                 
             </p>
         </div>
@@ -44,5 +49,9 @@
     }
     .footer_content {
         margin: 30px;
+    }
+    .ICP a {
+        color: white;
+        text-decoration: none;
     }
 </style>
