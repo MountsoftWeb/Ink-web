@@ -5,7 +5,7 @@
             <div class="detail_data_left">
 
                 <div class="detail_img">
-                    <img id="picture" title="点击修改" src="../carlos.jpg" @click="update"/>
+                    <img id="picture" title="点击修改" :src="picture" @click="update"/>
                     <input id="updateFile" type="file" ref="new_image" @change="updatePicture"><br>
                     <!-- <span style="text-align: center;">点击修改</span> -->
                     <span>{{message}}</span>
@@ -80,7 +80,8 @@ export default {
             },
             text: 0,
             message: '点击图片修改',
-            imgPath: '/Users/carlos/Documents/素材/社交二维码/carlos.jpg'
+            imgPath: '/Users/carlos/Documents/素材/社交二维码/carlos.jpg',
+            picture: ''
         }
     },
     methods: {
@@ -119,7 +120,16 @@ export default {
     // 页面加载执行
     mounted() {
         this.$store.dispatch('getDetail')
-        
+        this.axios({
+            method: "get",
+            url: "/hello/test/getPicture"
+        }).then(response => {
+            if(response.data.code == 200){
+                this.picture = response.data.message
+            }else{
+                this.imgPath = response.data.message
+            }
+        })
     },
     computed: {
         ...mapState(['user'])

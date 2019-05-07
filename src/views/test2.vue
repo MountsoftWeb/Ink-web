@@ -59,7 +59,9 @@
             url: "/hello/test/getPicture"
         }).then(response => {
             if(response.data.code == 200){
-                this.imgPath = response.data.message
+                const avator = response.data.message
+                // alert(avator)
+                this.imgPath = avator
             }else{
 
             }

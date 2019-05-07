@@ -301,6 +301,9 @@
     }
     
     .form_btn_register {
+        /* line-height: inherit;
+        border-bottom: 2px solid transparent;
+        color: black; */
         width: 150px;
         text-align: center;
     }
