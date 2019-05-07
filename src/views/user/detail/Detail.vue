@@ -5,7 +5,7 @@
             <div class="detail_data_left">
 
                 <div class="detail_img">
-                    <img id="picture" title="点击修改" :src="picture" @click="update"/>
+                    <img id="picture" title="点击修改" :src="user.picture" @click="update"/>
                     <input id="updateFile" type="file" ref="new_image" @change="updatePicture"><br>
                     <!-- <span style="text-align: center;">点击修改</span> -->
                     <span>{{message}}</span>
@@ -68,16 +68,7 @@ export default {
 
     data () {
         return{
-            items: {
-                a: {
-                    id: 0,
-                    message: "ds"
-                },
-                b: {
-                    id: 1,
-                    message: "ddsdsdd"
-                }
-            },
+            items: {},
             text: 0,
             message: '点击图片修改',
             imgPath: '/Users/carlos/Documents/素材/社交二维码/carlos.jpg',
@@ -120,14 +111,25 @@ export default {
     // 页面加载执行
     mounted() {
         this.$store.dispatch('getDetail')
+        // this.axios({
+        //     method: "get",
+        //     url: "/hello/test/getPicture"
+        //     }).then(response => {
+        //         if(response.data.code == 200){
+        //             this.picture = response.data.message
+        //         }else{
+        //             this.imgPath = response.data.message
+        //         }
+        //     })
         this.axios({
             method: "get",
-            url: "/hello/test/getPicture"
+            url: "/hello/trading/getCommodity",
         }).then(response => {
-            if(response.data.code == 200){
-                this.picture = response.data.message
+            if (response.data.code == 200){
+                // alert(response.data)
+                this.items = response.data.data
             }else{
-                this.imgPath = response.data.message
+
             }
         })
     },
@@ -146,6 +148,8 @@ export default {
     .detail_header { 
         height: 300px;
         background-color: #F5F6F7;
+        font-size: 16px;
+        color: black;
     }
     .detail_content {
         background-color: white;
@@ -204,8 +208,7 @@ export default {
     }
     .detail_data_L ul li {
         list-style-type: none;
-        font-size: 16px;
-        color: black;
+        
     }
     .detail_data_right {
         position: absolute;
