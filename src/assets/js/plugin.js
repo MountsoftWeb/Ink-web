@@ -10,7 +10,7 @@ const CCcomponents = {
 
     BLeft : Left,                       // 左导航条
     BLayoutNoLeft : Layout.LayoutNoLeft,// 不带左导航条页面
-    BLeftItem : Left.LeftItem,
+    BLeftItem : Left.LeftItem,    
 
 }
 
