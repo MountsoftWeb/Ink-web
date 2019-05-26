@@ -1,6 +1,7 @@
 <template>
-    <a-layout>
-        <b-left>
+    <!-- <a-layout> -->
+    <b-layout-no-left>
+        <!-- <b-left>
             <div class="navside">
                 <ul>
                     <li>
@@ -14,8 +15,9 @@
                     </li>
                 </ul>
             </div>
-        </b-left>
-    </a-layout>
+        </b-left> -->
+    </b-layout-no-left>
+    <!-- </a-layout> -->
 </template>
 
 <script>
@@ -25,10 +27,10 @@ export default {
 </script>
 
 <style scoped>
-    .id {
+    /* .id {
         font-size: 200px;
     }
-    /* 消除 routter-link 样式 */
+    消除 routter-link 样式
     a {
         text-decoration: none;
     }
@@ -39,5 +41,5 @@ export default {
     .left span {
         color: white;
         font-size: 30px;
-    }
+    } */
 </style>

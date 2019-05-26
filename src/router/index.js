@@ -54,13 +54,13 @@ let router = new Router({
     {
       path: '/user',
       name: 'user',
-      meta: {
-        requireAuth: true,
-      },
+      // meta: {
+      //   requireAuth: true,
+      // },
       component: User,
       children: [
         {
-          path: '',
+          path: 'a',
           component: User.Detail,
         },
         {
@@ -81,17 +81,18 @@ let router = new Router({
       
       children: [
         {
-          path: 'digital',
-          component: Trading.Digital
-        },
-        {
-          path: '',
+          path: 'life',
           component: Trading.Life
         },
         {
-          path: 'life',
-          component: HelloWorld
-        }
+          path: 'digital',
+          component: Trading.Digital
+        },
+
+        // {
+        //   path: 'life',
+        //   component: HelloWorld
+        // }
       ]
     },
 

@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style >
+<style scoped>
    .a {
       padding: 20px;
    }

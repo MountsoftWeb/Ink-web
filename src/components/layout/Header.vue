@@ -12,7 +12,7 @@
           <router-link to="/">首页</router-link>
         </li>
         <li>
-          <router-link to="/trading">二手市场</router-link>
+          <router-link to="/trading/life">二手市场</router-link>
         </li>
         <li>
           <a href="#">开发</a>
@@ -33,7 +33,7 @@
       </div>
       <ul>
         <li>
-            <router-link to="/user">自己</router-link>
+            <router-link to="/user/a">自己</router-link>
             <router-link to="/login" class="login">登录</router-link>
         </li>
         <li>

@@ -9,7 +9,7 @@
             <router-view></router-view>
             <!-- 底部信息 -->
             <!-- <div class="content_no_left_footer"> -->
-                <c-footer></c-footer>
+            <c-footer></c-footer>
             <!-- </div> -->
         </div>
 
