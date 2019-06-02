@@ -33,7 +33,7 @@
       </div>
       <ul>
         <li>
-            <router-link to="/user/a">自己</router-link>
+            <router-link to="/user">自己</router-link>
             <router-link to="/login" class="login">登录</router-link>
         </li>
         <li>

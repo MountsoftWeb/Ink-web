@@ -9,7 +9,7 @@ import Login from '@/views/Login'
 
 import Trading from '@/views/trading'             // 物品交易
 import Test2 from '@/views/community'   // 社团
-import User from '@/views/user'                   // 用户详情
+import User from '@/views/user'                 // 用户详情
 
 import store from '@/store/index'
 
@@ -50,6 +50,17 @@ let router = new Router({
       ]
     },
 
+    {
+      path: '/aaa',
+      name: 'aaa',
+      component: User,
+      children: [
+        {
+          path: 'a',
+          component: User.Detail,
+        }
+      ]
+    },
     // 用户详情
     {
       path: '/user',
@@ -60,12 +71,13 @@ let router = new Router({
       component: User,
       children: [
         {
-          path: 'a',
-          component: User.Detail,
+          path: '',
+          component: User.Detail, // 默认展示所有作品，个人，点赞，收藏
         },
         {
           path: 'manage',
-          component: User.Manage
+          component: User.Manage,
+          // component: User.Detail.Manage,
         }
       ]
 
