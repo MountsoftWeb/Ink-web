@@ -10,6 +10,7 @@ import Login from '@/views/Login'
 import Trading from '@/views/trading'             // 物品交易
 import Test2 from '@/views/community'   // 社团
 import User from '@/views/user'                 // 用户详情
+import Project from '@/views/project'           // 项目
 
 import store from '@/store/index'
 
@@ -25,15 +26,21 @@ let router = new Router({
     {
       path: '/',
       name: 'Layout',
-      component: LayoutNoLeft,
+      component: Project,
       children:[
         {
-          path: 'test',
-          component: HelloWorld
-        }
+          path: '',
+          component: Project.Build,
+        },
+        {
+          path: '/build',
+          name: 'build',
+          component: Project.Build
+        },
+    
       ]
     },
-
+    
     {
       path: '/test',
       name: 'Layout_1',

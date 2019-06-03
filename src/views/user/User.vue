@@ -50,7 +50,7 @@
                     <router-link to="/user/manage">发布</router-link>
                 </li>
                 <li class="collections">
-                    <router-link to="/user/colloctons">二手市场</router-link>
+                    <router-link to="/user/colloctons">收藏</router-link>
                 </li>
                 <li class="apprecations">
                     <router-link to="/user">点赞</router-link>
