@@ -1,7 +1,7 @@
 <template>  
     <div>    
         <!-- 物品展示 -->
-        <div v-for="object in project" class="project_content">
+        <div v-for="object in items" class="project_content">
             <ul class="project_content_main">
                 <li><img src="../carlos.jpg"></li>
                 <!-- <li><img :src="{{object.picture}}"></li> -->
@@ -22,57 +22,62 @@
 </template>
 
 <script>
-import {mapState} from "vuex"
-
+import { mapState } from "vuex"
 export default {
-    data() {
-        return {
-            items: {},
-            id: 0
+
+    data () {
+        return{
+            items: {
+                a:1,
+                b:2,
+                z:1,
+                x:2,
+                c:1,
+                v:2,
+                n:1,
+                m:2,
+                q:2,
+            },
+            text: 0,
+            // message: '点击图片修改',
+            imgPath: '/Users/carlos/Documents/素材/社交二维码/carlos.jpg',
+            picture: ''
         }
     },
     methods: {
-        show: function() {
-            console.log(this.$route.query.id)
-            // this.items = this.id
-            // this.items = this.$route.query.id
-            this.$store.dispatch('getProjectId', 18)
-            // alert(this.id)
-            // this.axios({
-            //     method: "get",
-            //     url: "/hello/project/getProject",
-            // }).then(response => {
-            //     if (response.data.code == 200){
-            //         // alert(response.data)
-            //         // this.items = response.data.data
-            //         this.items = this.id
-            //     }else{
-
-            //     }
-            // })
+        // 删除
+        deleteId(a) {
+            alert(a)
         }
-    },
-    created() {
-    },
-    mounted() {
-        this.id = this.$route.query.id
-        // this.items = this.$route.query.id
-        this.show()
-
         
+    },
+    // 页面加载执行
+    mounted() {
+        // this.$store.dispatch('getDetail')
+        // this.axios({
+        //     method: "get",
+        //     url: "/hello/test/getPicture"
+        //     }).then(response => {
+        //         if(response.data.code == 200){
+        //             this.picture = response.data.message
+        //         }else{
+        //             this.imgPath = response.data.message
+        //         }
+        //     })
+        // this.axios({
+        //     method: "get",
+        //     url: "/hello/project/getProject",
+        // }).then(response => {
+        //     if (response.data.code == 200){
+        //         // alert(response.data)
+        //         this.items = response.data.data
+        //     }else{
 
+        //     }
+        // })
 
     },
-    watch: {
-        '$route' (to, from) {
-            // 刷新参数放到这里里面去触发就可以刷新相同界面了
-            this.show()
-        }
-    },
-    computed: {
-        ...mapState(['project'])
-    }
-    
+ 
 
 }
 </script>

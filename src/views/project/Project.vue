@@ -9,7 +9,7 @@
                             <p @click="project(1)">建筑</p>
                             <p @click="project(2)">插画</p>
                             <p><router-link  :to="{path:'/build', query:{id:1}}">a</router-link></p>
-                            <p><router-link :to="{path:'/build', query:{id:2}}">b</router-link></p>
+                            <p><router-link :to="{path:'/build', query:{id:19}}">b</router-link></p>
                         </div>
                     </dd>
                 </dl>
@@ -20,37 +20,61 @@
                     
                 </dl>
             </div>
-            <!-- <div class="project_content"> -->
-                <router-view></router-view>
-            <!-- </div> -->
+            <div class="node">
+                <router-link to="/">首页</router-link>
+            </div>
+            <div class="project_content">
+                <!-- <router-view></router-view> -->
+                <project-list></project-list>
+            </div>
         </div>
     </b-layout-no-left>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
     methods: {
         project: function(num) {
             alert(num)
+            // 根据 project 分类进行读取信息
+            this.$store.dispatch('getProjectId', 1)
         }
-    }
+    },
+    mounted() {
+        this.$store.dispatch('getProjectId', 1)
+    },
+    // computed: {
+    //     ...mapState(['project'])
+    // }
 }
 </script>
 
 <style scoped>
     .project_container {
-        margin: 0;
-        padding: 1%;
+        margin: 0 auto;
+        width: 1300px;
+        padding: 0;
+        /* text-align: center; */
+        /* top: 100px;
+        position: relative; */
+
+
     }
     /* ============= 导航条 ============ */
     .project_nav {
-        padding: 6px;
+        margin-top: 20px;
+        /* margin: 0 auto; */
+        padding: 11px;
         /* float: left; */
         display: inline-block;
         position: relative;
-        left: 8%;
-        width: 80%;
-        border: solid black;
+        /* left: 8%; */
+        width: 1276px;
+        border: 1px solid black;
+        border-radius: 5px;
+        clear: both;
     }
     .project_nav dl {
         display: block;
@@ -61,6 +85,10 @@ export default {
         font-weight: bold;
         /* text-align: center; */
     }
+    /* ============= node =============== */
+    .node {
+        padding: 2px 0 2px 0;
+    }
     /* ============== category ========== */
 
     .project_nav dl dt {
@@ -70,11 +98,11 @@ export default {
         overflow: hidden;
     }
     .project_nav dl dd {
-        width: 1350px;
+        width: 1200px;
         height: 20px;
         /* float: left; */
         position: relative;
-        display: inline-block;
+        /* display: inline-block; */
     }
     .project_nav dd p {
         /* width: 50px; */
@@ -89,10 +117,9 @@ export default {
     .project_content {
         /* clear: both; */
         display: inline-block;
-        
         position: relative;
-        padding: 2px;
-        left: 8%;
-        width: 80%;
+        padding: 10px;
+        /* left: 8%; */
+        width: 1280px;
     }
 </style>

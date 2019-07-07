@@ -4,5 +4,6 @@
 export default {
     isLoggedIn: state => state.isLogin,
     authStatus: state => state.status,
-    getDetail: state => state.user
+    getDetail: state => state.user,
+    getProjectId: state => state.projects
 }

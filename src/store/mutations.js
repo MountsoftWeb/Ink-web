@@ -3,7 +3,8 @@
 import {
     LOGIN,
     LOGOUT,
-    GETDETAIL
+    GETDETAIL,
+    GETPROJECTID
 } from './mutation-types'
 
 export default {
@@ -18,5 +19,9 @@ export default {
     [GETDETAIL] (state, data) {
         state.user = data;
         // alert(data.username)
+    },
+    [GETPROJECTID] (state, data) {
+        state.projects = data;
+        console.log(data)
     }
 }

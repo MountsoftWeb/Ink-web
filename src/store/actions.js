@@ -3,7 +3,8 @@
 import {
     LOGIN,
     LOGOUT,
-    GETDETAIL
+    GETDETAIL,
+    GETPROJECTID
 } from './mutation-types'
 import axios from '../axios/http'
 import router from './../router'
@@ -46,9 +47,10 @@ export default {
     logOut({commit}, data){       // 退出用户，将 isLogin 赋值为 0
       commit(LOGOUT, data)
     },
+    // 获取用户详细信息
     getDetail({commit, data}){
         axios({
-            method: "Post",
+            method: "post",
             // url: "/hello/test/getPicture"
             url: "/hello/test/getDetail"
         }).then(response => {
@@ -58,5 +60,22 @@ export default {
 
             }
         })
+    },
+    getProjectId({commit, data}, id){
+        // getProjectId({commit, data}, projectId){
+    axios({
+            method: "post",
+            // url: "/hello/test/getPicture"
+            // url: "/hello/test/getDetail",
+            url: "/hello/project/getAllProjects",
+        }).then(response => {
+            if(response.data.code == 200){
+                console.log(id)
+                commit(GETPROJECTID, response.data.data)
+            }else{
+
+            }
+        })
+        
     }
 }

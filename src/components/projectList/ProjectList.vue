@@ -1,16 +1,17 @@
 <template>  
     <div>    
         <!-- 物品展示 -->
-        <div v-for="object in project" class="project_content">
+        <h1>project</h1>
+        <div v-for="(project, index) in projects" :key="index" class="project_content">
             <ul class="project_content_main">
-                <li><img src="../carlos.jpg"></li>
+                <li><img src="carlos.jpg"></li>
                 <!-- <li><img :src="{{object.picture}}"></li> -->
-                <li>详情{{object.message}}</li>
-                <li>类别{{object.id}}</li>
-                <li>上传日期{{object.id}}</li>
-                <li>所属用户{{object.message}}</li>
-                <li>喜欢{{object.message}}</li>
-                <li>收藏{{object.message}}</li>
+                <li>详情{{project.id}}</li>
+                <li>类别{{project.id}}</li>
+                <li>上传日期{{project.id}}</li>
+                <li>所属用户{{project.id}}</li>
+                <li>喜欢{{project.id}}</li>
+                <li>收藏{{project.id}}</li>
                 
                 <li>
                     <input id="delete" type="button" @click="deleteId(object.id)" value="详细信息"></input>
@@ -27,16 +28,25 @@ import {mapState} from "vuex"
 export default {
     data() {
         return {
-            items: {},
+            // projects: {
+            //     a: {
+            //         name : "12",
+            //         id : 12
+            //     },
+            //     b: {
+            //         name : "13",
+            //         id : 13
+            //     },
+            // },
             id: 0
         }
     },
     methods: {
         show: function() {
-            console.log(this.$route.query.id)
+            // console.log(this.$route.query.id)
             // this.items = this.id
             // this.items = this.$route.query.id
-            this.$store.dispatch('getProjectId', 18)
+            
             // alert(this.id)
             // this.axios({
             //     method: "get",
@@ -55,11 +65,12 @@ export default {
     created() {
     },
     mounted() {
-        this.id = this.$route.query.id
+        // this.id = this.$route.query.id
         // this.items = this.$route.query.id
-        this.show()
+        // this.show()
 
-        
+        // this.$store.dispatch('project')
+        this.$store.dispatch('getProjectId', 0)
 
 
     },
@@ -70,7 +81,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(['project'])
+        ...mapState(['projects'])
     }
     
 
@@ -89,7 +100,6 @@ export default {
         /* padding: 10px; */
         padding: 10px;
     } 
-    /* ===================== 发布收藏导航条 ================== */
 
     /* ==================== 发布收藏 ======================== */
     .project_content_main {

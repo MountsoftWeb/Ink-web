@@ -1,5 +1,6 @@
 import Layout from '../../components/layout'
 import Left from '../../components/left'
+import ProjectList from '../../components/projectList'
 
 
 const CCcomponents = {
@@ -12,6 +13,7 @@ const CCcomponents = {
     BLayoutNoLeft : Layout.LayoutNoLeft,// 不带左导航条页面
     BLeftItem : Left.LeftItem,    
 
+    ProjectList : ProjectList,   // 工程组件
 }
 
 export default {
