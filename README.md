@@ -51,4 +51,5 @@
 > npm run dev
 
 
-asdas
+$ npm install vue-meta --save
+

@@ -27,6 +27,7 @@ let router = new Router({
       path: '/',
       name: 'Layout',
       component: LayoutNoLeft,
+
     },
     
     {
@@ -61,6 +62,7 @@ let router = new Router({
       path: '/project',
       name: 'Prpject',
       component: Project,
+
     },
     // 用户详情
     {
@@ -157,17 +159,28 @@ let router = new Router({
 
 // 拦截请求，用户权限判断
 router.beforeEach((to, from, next) => {
+  if(to.meta.content){
+    let head = document.getElementsByTagName('head');
+    let meta = document.createElement('meta');
+    meta.content = to.meta.content;
+    head[0].appendChild(meta)
+  }
+  /* 路由发生变化修改页面title */
+  if (to.meta.title) {
+    document.title = to.meta.title;
+  }
+
   if (to.matched.some(r => r.meta.requireAuth)) {
       // if (store.state.token == '1') {
       if(localStorage.getItem('token') == '' || localStorage.getItem('token') == null){
           next({
-              
             path: '/login',
             query: {redirect: to.fullPath}
         });
         return
       }
       else {
+        
           next();
           return
       }

@@ -56,11 +56,11 @@ export default {
         padding: 0;
     }
     .layout .left {
-        width: 10%;
+        /* width: 10%; */
     }
     .left{
         position: fixed;
-        width: 10%;
+        /* width: 10%; */
         top: 60px;
         height: calc(100% - 60px);
         border-right: 1px solid #dfe4ed;

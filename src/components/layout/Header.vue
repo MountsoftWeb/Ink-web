@@ -46,30 +46,14 @@
 </template>
 
 <script>
-// window.onload = function() {
-//   var lis = document.querySelectorAll(".header > .header-middle ul li");
-//         var as = document.querySelectorAll(".header > .header-middle ul li a");
-//         var input = document.querySelector("#search");
-//         var index = 0;
-//         for (var i = 0; i < as.length; i++) {
-//           as[i].num = i;
-//           as[i].onclick = function() {
-//             index = this.num;
-//             for (var i = 0; i < as.length; i++) {
-//               as[i].parentNode.style.backgroundColor = " rgb(49, 47, 47)";
-//               as[i].style.fontWeight = "bold";
-//             }
-//             as[index].parentNode.style.backgroundColor = "black";
-//             as[index].style.fontWeight = "inherit";
-//           };
-//         }
+
 //         input.onclick = function(){
 //           input.style.width = 160 +'px';
 //         }
 //         document.onmousedown = function(){
 //           input.style.width = 120 +'px';
 //         }
-//     }
+//     
 export default {
     methods: {
       logout () {
@@ -95,10 +79,10 @@ export default {
     padding: 0;
   }
   body {
-    height: 16000px;
+    /* height: 16000px; */
   }
   .header {
-    position: fixed;
+    /* position: fixed; */
     width: 100%;
     height: 60px;
     /* background-color: rgb(49, 47, 47); */
@@ -147,7 +131,7 @@ export default {
     cursor: pointer;
   }
   /* 登录 */
-  /* .header > .header-right ul li {
+  .header > .header-right ul li {
     text-decoration: none;
     text-align: center;
     line-height: 60px;
@@ -156,7 +140,7 @@ export default {
     font-size: 14px;
     padding-left: 2px;
     cursor: pointer;
-  } */
+  }
 
   .header > .header-middle ul li a:hover,
   .header > .header-right ul li a:hover {
@@ -214,5 +198,6 @@ export default {
   .clearfix {
     clear: both;
     overflow: hidden;
+    box-sizing: border-box;
   }
 </style>

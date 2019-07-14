@@ -5,13 +5,13 @@
                 <dl>
                     <dt>类别</dt>
                     <dd>
-                        <router-link :to="{path:'/project', query:{id:13}}">素描</router-link>
-                        <router-link :to="{path:'/project', query:{id:19}}">速写</router-link>
-                        <router-link :to="{path:'/project', query:{id:1}}">水彩画</router-link>
-                        <router-link :to="{path:'/project', query:{id:19}}">水粉画</router-link>
-                        <router-link :to="{path:'/project', query:{id:13}}">国画</router-link>
-                        <router-link :to="{path:'/project', query:{id:19}}">油画</router-link>
-                        <router-link :to="{path:'/project', query:{id:1}}">版画</router-link>
+                        <router-link :to="{path:'/project', query:{id:1}}">素描</router-link>
+                        <router-link :to="{path:'/project', query:{id:2}}">速写</router-link>
+                        <router-link :to="{path:'/project', query:{id:3}}">水彩画</router-link>
+                        <router-link :to="{path:'/project', query:{id:4}}">水粉画</router-link>
+                        <router-link :to="{path:'/project', query:{id:5}}">国画</router-link>
+                        <router-link :to="{path:'/project', query:{id:6}}">油画</router-link>
+                        <router-link :to="{path:'/project', query:{id:7}}">版画</router-link>
                     </dd>
                 </dl>
 
@@ -19,9 +19,9 @@
                     <dt>内容</dt>
                     <dd>
                         <div class="categories">
-                            <router-link :to="{path:'/project', query:{id:13}}">风景</router-link>
-                            <router-link :to="{path:'/project', query:{id:19}}">场景</router-link>
-                            <router-link :to="{path:'/project', query:{id:1}}">人物</router-link>
+                            <router-link :to="{path:'/project', query:{id:1}}">风景</router-link>
+                            <router-link :to="{path:'/project', query:{id:2}}">场景</router-link>
+                            <router-link :to="{path:'/project', query:{id:3}}">人物</router-link>
                             <router-link :to="{path:'/project', query:{id:19}}">建筑</router-link>
                         </div>
                     </dd>
@@ -75,7 +75,13 @@
 // import { mapState } from "vuex";
 
 export default {
-    
+        // metaInfo: {
+        //     title: "ds",
+        //     meta: [
+                
+        //         { name: 'd', content: 'width=1300, user-scalable=yes, target-densitydpi=device-dpi' }
+        //     ]
+        // },
     methods: {
         project: function(categories_id) {
             // alert(categories_id)
@@ -96,18 +102,20 @@ export default {
 
 <style scoped>
     .project_container {
+        overflow: auto;
         margin: 0 auto;
-        width: 1300px;
+        /* width: auto; */
         padding: 0;
         /* text-align: center; */
-        /* top: 100px;
-        position: relative; */
-
+        /* top: 100px;*/
+        max-width: 1300px;
+        /* margin: 0 10% 0 10%; */
 
     }
     /* ============= 导航条 ============ */
     .project_nav {
         margin-top: 20px;
+        /* text-align: center; */
         /* margin: 0 auto; */
         padding: 11px;
         /* float: left; */

@@ -93,7 +93,7 @@ export default {
                     // callback: success
                 }).then(response => {
                     console.log(response);
-                    if(response.data.code == 25){
+                    if(response.data.code != 404){
                         this.message = '更行成功'
                         // this.reload()
                         this.$router.go(0)
@@ -145,8 +145,9 @@ export default {
 <style scoped>
     .detail_container {
         overflow: auto;
-        padding: 2%;
+        margin: 0 auto;
         background-color: #F5F6F7;
+        max-width: 1300px;
     }
     .detail_left { 
         float: left;
@@ -159,9 +160,9 @@ export default {
         padding: 10px;
     } 
     .detail_data_left {
-        padding: 10px;
+        padding-top: 10px;
         display:inline-block;
-        width: 95%;
+        /* width: 95%; */
         background-color: rgb(255, 255, 255);
         border-radius: 10px;
     }
@@ -194,7 +195,7 @@ export default {
     .user_table {
         padding: 20px;
         text-align: center;
-        width: 350px;
+        width: 280px;
     }
 
 

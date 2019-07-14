@@ -1,6 +1,6 @@
 <template>
    <div class="a">
-      <h1>日常生活用品</h1>
+      <h1>日常生活用品日常生活用品<日常生活用品</h1>
    </div>
 </template>
 

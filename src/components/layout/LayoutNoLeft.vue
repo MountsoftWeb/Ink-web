@@ -22,7 +22,16 @@
 
 <script>
 
-    // export default{
+    export default{
+        metaInfo: {
+            title: "ds",
+            meta: [
+                
+                { name: 'viewport', content: 'width=1300, user-scalable=yes, target-densitydpi=device-dpi' }
+            ]
+        },
+    }
+
     //     mounted() {
     //         this.axios({
     //             method: "get",
@@ -39,7 +48,6 @@
     //                     }.bind(this)
     //                     );
     //             }
-    //     }
     
 </script>
 

@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import Meta from 'vue-meta'
 // import axios from 'axios'
 // import VueAxios from 'vue-axios'
 import axios from './axios/http'
@@ -17,6 +17,7 @@ import './assets/css/body.css'
 Vue.config.productionTip = false
 
 Vue.use(MyPlugin)
+Vue.use(Meta)
 
 Vue.prototype.axios = axios;
 // Vue.use(VueAxios,axios)
@@ -32,6 +33,7 @@ new Vue({
   axios,
   store,
   router,
+  Meta,
   render: h => h(App),
   
 })

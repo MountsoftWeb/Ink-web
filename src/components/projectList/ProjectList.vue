@@ -95,6 +95,7 @@ export default {
         float: left;
         /* padding: 10px; */
         margin: 10px;
+        /* overflow: auto; */
     } 
 
     /* ==================== 发布收藏 ======================== */

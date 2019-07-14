@@ -24,24 +24,31 @@
 
 <script>
 
-    // export default{
-    //     mounted() {
-    //         this.axios({
-    //             method: "get",
-    //             url: "/hello/test"
-    //             })
-    //             .then(
-    //                     function(response) {
-    //                     this.interestList = response.data.data;
-    //                     }.bind(this)
-    //             )
-    //             .catch(
-    //                     function(error) {
-    //                             alter(error);
-    //                     }.bind(this)
-    //                     );
-    //             }
-    //     }
+    export default{
+        metaInfo: {
+            title: "ds",
+            meta: [
+                
+                { name: 'viewport', content: 'width=1300, user-scalable=yes, target-densitydpi=device-dpi' }
+            ]
+        },
+        // mounted() {
+        //     this.axios({
+        //         method: "get",
+        //         url: "/hello/test"
+        //         })
+        //         .then(
+        //                 function(response) {
+        //                 this.interestList = response.data.data;
+        //                 }.bind(this)
+        //         )
+        //         .catch(
+        //                 function(error) {
+        //                         alter(error);
+        //                 }.bind(this)
+        //                 );
+        //         }
+        }
     
 </script>
 
@@ -57,8 +64,8 @@
         
     }
     .layout .content{
-        margin-left: 185px;
-        width: calc(100% - 185px);
+        margin-left: 200px;
+        width: calc(100% - 200px);
     }
   
 </style>

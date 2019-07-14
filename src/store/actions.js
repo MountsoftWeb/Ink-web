@@ -65,7 +65,7 @@ export default {
         // getProjectId({commit, data}, projectId){
         axios({
             method: "post",
-            url: "/hello/project/getAllProjects?id=" + id,
+            url: "/hello/project/getAllProject?id=" + id,
          
             // data: id,
         }).then(response => {
