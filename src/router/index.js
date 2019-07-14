@@ -7,8 +7,8 @@ import Test from '@/views/test.vue'
 
 import Login from '@/views/Login'
 
-import Trading from '@/views/trading'             // 物品交易
-import Test2 from '@/views/community'   // 社团
+import Trading from '@/views/trading'           // 物品交易
+import Test2 from '@/views/community'           // 社团
 import User from '@/views/user'                 // 用户详情
 import Project from '@/views/project'           // 项目
 
@@ -26,19 +26,7 @@ let router = new Router({
     {
       path: '/',
       name: 'Layout',
-      component: Project,
-      children:[
-        {
-          path: '',
-          component: Project.Build,
-        },
-        {
-          path: '/build',
-          name: 'build',
-          component: Project.Build
-        },
-    
-      ]
+      component: LayoutNoLeft,
     },
     
     {
@@ -67,6 +55,12 @@ let router = new Router({
           component: User.Detail,
         }
       ]
+    },
+    // 项目模块
+    {
+      path: '/project',
+      name: 'Prpject',
+      component: Project,
     },
     // 用户详情
     {

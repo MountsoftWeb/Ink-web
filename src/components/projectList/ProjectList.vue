@@ -43,10 +43,10 @@ export default {
     },
     methods: {
         show: function() {
-            // console.log(this.$route.query.id)
+            console.log(this.$route.query.id)
+            this.$store.dispatch('getProjectId', this.$route.query.id)
             // this.items = this.id
             // this.items = this.$route.query.id
-            
             // alert(this.id)
             // this.axios({
             //     method: "get",
@@ -57,7 +57,6 @@ export default {
             //         // this.items = response.data.data
             //         this.items = this.id
             //     }else{
-
             //     }
             // })
         }
@@ -68,11 +67,8 @@ export default {
         // this.id = this.$route.query.id
         // this.items = this.$route.query.id
         // this.show()
-
         // this.$store.dispatch('project')
-        this.$store.dispatch('getProjectId', 0)
-
-
+        this.$store.dispatch('getProjectId', this.$route.query.id)
     },
     watch: {
         '$route' (to, from) {
@@ -98,7 +94,7 @@ export default {
         height: 345px;
         float: left;
         /* padding: 10px; */
-        padding: 10px;
+        margin: 10px;
     } 
 
     /* ==================== 发布收藏 ======================== */

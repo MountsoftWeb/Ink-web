@@ -63,14 +63,14 @@ export default {
     },
     getProjectId({commit, data}, id){
         // getProjectId({commit, data}, projectId){
-    axios({
+        axios({
             method: "post",
-            // url: "/hello/test/getPicture"
-            // url: "/hello/test/getDetail",
-            url: "/hello/project/getAllProjects",
+            url: "/hello/project/getAllProjects?id=" + id,
+         
+            // data: id,
         }).then(response => {
             if(response.data.code == 200){
-                console.log(id)
+                // console.log(id)
                 commit(GETPROJECTID, response.data.data)
             }else{
 

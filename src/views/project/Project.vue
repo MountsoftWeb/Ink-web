@@ -3,20 +3,60 @@
         <div class="project_container">
             <div class="project_nav">
                 <dl>
-                    <dt>类型</dt>
+                    <dt>类别</dt>
+                    <dd>
+                        <router-link :to="{path:'/project', query:{id:13}}">素描</router-link>
+                        <router-link :to="{path:'/project', query:{id:19}}">速写</router-link>
+                        <router-link :to="{path:'/project', query:{id:1}}">水彩画</router-link>
+                        <router-link :to="{path:'/project', query:{id:19}}">水粉画</router-link>
+                        <router-link :to="{path:'/project', query:{id:13}}">国画</router-link>
+                        <router-link :to="{path:'/project', query:{id:19}}">油画</router-link>
+                        <router-link :to="{path:'/project', query:{id:1}}">版画</router-link>
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt>内容</dt>
                     <dd>
                         <div class="categories">
-                            <p @click="project(1)">建筑</p>
-                            <p @click="project(2)">插画</p>
-                            <p><router-link  :to="{path:'/build', query:{id:1}}">a</router-link></p>
-                            <p><router-link :to="{path:'/build', query:{id:19}}">b</router-link></p>
+                            <router-link :to="{path:'/project', query:{id:13}}">风景</router-link>
+                            <router-link :to="{path:'/project', query:{id:19}}">场景</router-link>
+                            <router-link :to="{path:'/project', query:{id:1}}">人物</router-link>
+                            <router-link :to="{path:'/project', query:{id:19}}">建筑</router-link>
                         </div>
                     </dd>
                 </dl>
 
                 <dl>
-                    <dt>方式</dt>
-                    <dd>dsd</dd>
+                    <dt>风格</dt>
+                    <dd>
+                            <router-link :to="{path:'/project', query:{id:12}}">中国风</router-link>
+                            <router-link :to="{path:'/project', query:{id:13}}">古风</router-link>
+                            <router-link :to="{path:'/project', query:{id:19}}">水墨</router-link>
+                            <router-link :to="{path:'/project', query:{id:1}}">日本</router-link>
+                            <router-link :to="{path:'/project', query:{id:19}}">欧美</router-link>
+                            <router-link :to="{path:'/project', query:{id:19}}">韩国</router-link>
+
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt>地域</dt>
+                    <dd>
+                        <router-link :to="{path:'/project', query:{id:12}}">中国</router-link>
+                        <router-link :to="{path:'/project', query:{id:1}}">日本</router-link>
+                        <router-link :to="{path:'/project', query:{id:19}}">欧美</router-link>
+                        <router-link :to="{path:'/project', query:{id:19}}">韩国</router-link>
+                    </dd>
+                </dl>
+
+                <dl>
+                    <dt>绘画方式</dt>
+                    <dd>
+                        <router-link :to="{path:'/project', query:{id:15}}">手绘</router-link>  
+                        <router-link :to="{path:'/project', query:{id:16}}">板绘</router-link>
+                        <router-link :to="{path:'/project', query:{id:16}}">墙绘</router-link>
+                    </dd>
                     
                 </dl>
             </div>
@@ -32,18 +72,21 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+// import { mapState } from "vuex";
 
 export default {
+    
     methods: {
-        project: function(num) {
-            alert(num)
+        project: function(categories_id) {
+            // alert(categories_id)
             // 根据 project 分类进行读取信息
-            this.$store.dispatch('getProjectId', 1)
+            // this.$route.push({name:'/project', params:{id:categories_id}})
+
+            // this.$store.dispatch('getProjectId', categories_id)
         }
     },
     mounted() {
-        this.$store.dispatch('getProjectId', 1)
+        // this.$store.dispatch('getProjectId', this.$route.query.id)
     },
     // computed: {
     //     ...mapState(['project'])
@@ -83,6 +126,7 @@ export default {
         font-size: 12px;
         color: black;
         font-weight: bold;
+        padding-top: 10px;
         /* text-align: center; */
     }
     /* ============= node =============== */
@@ -94,20 +138,24 @@ export default {
     .project_nav dl dt {
         display: inline-block;
         float: left;
-        width: 50px;
+        /* text-align: center; */
+        width: 100px;
         overflow: hidden;
     }
     .project_nav dl dd {
-        width: 1200px;
+        /* width: 1200px; */
         height: 20px;
         /* float: left; */
         position: relative;
+        /* margin: 0 0 10px 5px; */
         /* display: inline-block; */
     }
-    .project_nav dd p {
+    .project_nav dd a {
         /* width: 50px; */
+        text-decoration-line: none;
+        color: rgba(0, 0, 0, 0.6);
         display: inline;
-        padding: 0 5px 0 5px;
+        margin: 0 10px 0 10px;
     }
     /* .project_nav_2 {
         display: block;

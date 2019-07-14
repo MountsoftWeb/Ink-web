@@ -12,10 +12,10 @@
           <router-link to="/">首页</router-link>
         </li>
         <li>
-          <router-link to="/trading/life">二手市场</router-link>
+          <router-link to="/project">全部作品</router-link>
         </li>
         <li>
-          <a href="#">开发</a>
+          <router-link to="/trading/life">建筑</router-link>
         </li>
         <li>
           <a href="#">校园社团</a>

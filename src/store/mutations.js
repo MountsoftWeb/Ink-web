@@ -22,6 +22,6 @@ export default {
     },
     [GETPROJECTID] (state, data) {
         state.projects = data;
-        console.log(data)
+        // console.log(data)
     }
 }
