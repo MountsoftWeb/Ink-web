@@ -4,7 +4,7 @@
         <h1>project</h1>
         <div v-for="(project, index) in projects" :key="index" class="project_content">
             <ul class="project_content_main">
-                <li><img src="carlos.jpg"></li>
+                <li><img :src="project.picture"></li>
                 <!-- <li><img :src="{{object.picture}}"></li> -->
                 <li>详情{{project.id}}</li>
                 <li>类别{{project.id}}</li>

@@ -157,7 +157,7 @@ export default {
         background-color: #F5F6F7;
         font-size: 16px;
         color: black;
-        padding: 10px;
+        margin: 5px;
     } 
     .detail_data_left {
         padding-top: 10px;
@@ -168,7 +168,7 @@ export default {
     }
     .detail_data_left:hover {
         border-color: rgb(177, 38, 38);
-        box-shadow: 0 0 15px rgb(219, 221, 223);
+        box-shadow: 0 0 5px rgb(219, 221, 223);
     } 
     .detail_data_user {
         font-size: 12px;
@@ -195,7 +195,7 @@ export default {
     .user_table {
         padding: 20px;
         text-align: center;
-        width: 280px;
+        width: 260px;
     }
 
 
@@ -203,8 +203,8 @@ export default {
         /* float: left; */
         display:inline-block;
         position: relative;
-        width: 75%;
-        margin: 1%;
+        width: 1000px;
+        margin: 5px;
         /* background-color: rgb(255, 255, 255); */
         /* border-radius: 10px; */
     }

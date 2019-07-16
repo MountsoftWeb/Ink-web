@@ -3,7 +3,7 @@
         <!-- 物品展示 -->
         <div v-for="object in items" class="detail_content">
             <ul class="detail_content_main">
-                <li><img src="../carlos.jpg"></li>
+                <li><img :src="object.picture"></li>
                 <!-- <li><img :src="{{object.picture}}"></li> -->
                 <li>详情{{object.message}}</li>
                 <li>类别{{object.id}}</li>
@@ -55,7 +55,7 @@ export default {
         //     })
         this.axios({
             method: "get",
-            url: "/hello/project/getProject",
+            url: "/hello/test/project/getProject",
         }).then(response => {
             if (response.data.code == 200){
                 // alert(response.data)

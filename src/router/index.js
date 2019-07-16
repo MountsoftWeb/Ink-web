@@ -62,15 +62,18 @@ let router = new Router({
       path: '/project',
       name: 'Prpject',
       component: Project,
+      meta: {
+        requireAuth: true
+      }
 
     },
     // 用户详情
     {
       path: '/user',
       name: 'user',
-      // meta: {
-      //   requireAuth: true,
-      // },
+      meta: {
+        requireAuth: true,
+      },
       component: User,
       children: [
         {

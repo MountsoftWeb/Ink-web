@@ -3,62 +3,31 @@
         <div class="project_container">
             <div class="project_nav">
                 <dl>
+                    <dt>绘画方式</dt>
+                    <dd>
+                        <router-link :to="{path:'/project', query:{id:1}}">手绘</router-link>  
+                        <router-link :to="{path:'/project', query:{id:2}}">板绘</router-link>
+                        <router-link :to="{path:'/project', query:{id:3}}">墙绘</router-link>
+                    </dd>
+                    
+                </dl>
+                <dl>
                     <dt>类别</dt>
                     <dd>
-                        <router-link :to="{path:'/project', query:{id:1}}">素描</router-link>
-                        <router-link :to="{path:'/project', query:{id:2}}">速写</router-link>
-                        <router-link :to="{path:'/project', query:{id:3}}">水彩画</router-link>
-                        <router-link :to="{path:'/project', query:{id:4}}">水粉画</router-link>
-                        <router-link :to="{path:'/project', query:{id:5}}">国画</router-link>
-                        <router-link :to="{path:'/project', query:{id:6}}">油画</router-link>
-                        <router-link :to="{path:'/project', query:{id:7}}">版画</router-link>
+                        <router-link v-for="(category, index) in categories" :key="index" :to="{path:'/project', query:{id:category.id}}">{{category.category_name}}</router-link>
+                        
                     </dd>
                 </dl>
 
                 <dl>
-                    <dt>内容</dt>
+                    <dt>标签</dt>
                     <dd>
-                        <div class="categories">
-                            <router-link :to="{path:'/project', query:{id:1}}">风景</router-link>
-                            <router-link :to="{path:'/project', query:{id:2}}">场景</router-link>
-                            <router-link :to="{path:'/project', query:{id:3}}">人物</router-link>
-                            <router-link :to="{path:'/project', query:{id:19}}">建筑</router-link>
+                        <div class="labels">
+                            <router-link v-for="(label, index) in label" :key="index" :to="{path:'/project', query:{id:label.id}}">{{label.label_name}}</router-link>
                         </div>
                     </dd>
                 </dl>
 
-                <dl>
-                    <dt>风格</dt>
-                    <dd>
-                            <router-link :to="{path:'/project', query:{id:12}}">中国风</router-link>
-                            <router-link :to="{path:'/project', query:{id:13}}">古风</router-link>
-                            <router-link :to="{path:'/project', query:{id:19}}">水墨</router-link>
-                            <router-link :to="{path:'/project', query:{id:1}}">日本</router-link>
-                            <router-link :to="{path:'/project', query:{id:19}}">欧美</router-link>
-                            <router-link :to="{path:'/project', query:{id:19}}">韩国</router-link>
-
-                    </dd>
-                </dl>
-
-                <dl>
-                    <dt>地域</dt>
-                    <dd>
-                        <router-link :to="{path:'/project', query:{id:12}}">中国</router-link>
-                        <router-link :to="{path:'/project', query:{id:1}}">日本</router-link>
-                        <router-link :to="{path:'/project', query:{id:19}}">欧美</router-link>
-                        <router-link :to="{path:'/project', query:{id:19}}">韩国</router-link>
-                    </dd>
-                </dl>
-
-                <dl>
-                    <dt>绘画方式</dt>
-                    <dd>
-                        <router-link :to="{path:'/project', query:{id:15}}">手绘</router-link>  
-                        <router-link :to="{path:'/project', query:{id:16}}">板绘</router-link>
-                        <router-link :to="{path:'/project', query:{id:16}}">墙绘</router-link>
-                    </dd>
-                    
-                </dl>
             </div>
             <div class="node">
                 <router-link to="/">首页</router-link>
@@ -72,7 +41,7 @@
 </template>
 
 <script>
-// import { mapState } from "vuex";
+import { mapState } from "vuex";
 
 export default {
         // metaInfo: {
@@ -92,11 +61,16 @@ export default {
         }
     },
     mounted() {
-        // this.$store.dispatch('getProjectId', this.$route.query.id)
+        this.$store.dispatch('getLabel')
+        this.$store.dispatch('getCategories')
     },
     // computed: {
     //     ...mapState(['project'])
     // }
+    computed: {
+        ...mapState(['label']),
+        ...mapState(['categories'])
+    }
 }
 </script>
 

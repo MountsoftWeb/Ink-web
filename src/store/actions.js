@@ -4,7 +4,9 @@ import {
     LOGIN,
     LOGOUT,
     GETDETAIL,
-    GETPROJECTID
+    GETPROJECTID,
+    GETLABEL,
+    GETCATEGORIES
 } from './mutation-types'
 import axios from '../axios/http'
 import router from './../router'
@@ -61,6 +63,7 @@ export default {
             }
         })
     },
+    // 按照 项目 id 获取
     getProjectId({commit, data}, id){
         // getProjectId({commit, data}, projectId){
         axios({
@@ -76,6 +79,25 @@ export default {
 
             }
         })
-        
+    },
+    // 获取分类信息
+    getCategories({commit, data}) {
+        axios({
+            method: "get",
+            url: "/hello/category/getCategories"
+        }).then(response => {
+            commit(GETCATEGORIES, response.data.data)
+        })
+    },
+    // 获取标签信息
+    getLabel({commit, data}) {
+        axios({
+            method: "get",
+            url: "/hello/label/getLabel"
+        }).then(response => {
+            // if (response.data.code == 200){
+                commit(GETLABEL, response.data.data)
+            // }
+        })
     }
 }
