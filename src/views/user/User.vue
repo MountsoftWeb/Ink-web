@@ -13,49 +13,32 @@
                     <p>用户名:{{user.username}}</p>
                     <p>邮箱:{{user.email}}</p>
                     <p>个人简介:</p>
-                    <table class="user_table">
-                        <tr>
-                            <td>
-                                关注
-                            </td>
-                            <td>
-                                被关注
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <p>性别:{{user.sex}}</p>
-                            </td>
-                            <td>
-                                <p>学校:{{user.school}}</p>
-                            </td>
-                        </tr>
-
-                        <tr>
-                            <td>
-                                <p>专业:{{user.major}}</p>
-                            </td>
-                            <td>
-                                <p>手机号:{{user.phone}}</p>
-                            </td>
-                        </tr>
-                    </table>
+                    <div class="user_table">
+                        <p>
+                            <span >关注</span>
+                            <span>粉丝</span>
+                        </p>
+                        <p>职位:{{user.major}}</p>
+                        <p>联系方式:{{user.phone}}</p>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="detail_right">
-            <ul class="detail_right_header">
-                <li class="project">
-                    <router-link to="/user/manage">发布</router-link>
-                </li>
-                <li class="collections">
-                    <router-link to="/user/colloctons">收藏</router-link>
-                </li>
-                <li class="apprecations">
-                    <router-link to="/user">点赞</router-link>
-                </li>
-            </ul>
+            <div class="detail_right_header">
+                <!-- <div :class="activeClass == index ? 'active':''" v-for="(item,index) in itemList" :key="index" @click="getItem(index)">
+                    <router-link :to="item.to">{{item.text}}</router-link>
+                </div> -->
+                <router-link v-for="(item,index) in itemList" 
+                    :key="item.value" 
+                    :to="{path:item.to,query:{item:index}}"
+                    :class="{'active':activeClass == index}"
+                    @click.native="getItem(index)" 
+                    > 
+                    {{item.text}} 
+                </router-link> 
+
+            </div>
             <br>
             <!-- 物品展示 -->
             <router-view></router-view>
@@ -75,7 +58,36 @@ export default {
             text: 0,
             // message: '点击图片修改',
             imgPath: '/Users/carlos/Documents/素材/社交二维码/carlos.jpg',
-            picture: ''
+            picture: '',
+            activeClass: 0, // 0为默认选择第一个，-1为不选择
+            itemList: [
+                {
+                    to: "/user/upload",
+                    text: "上传作品"
+                },
+                {
+                    to: "/user/manage",
+                    text: "作品管理"
+                },
+                
+                {
+                    to: "/user/userlist",
+                    text: "我的关注"
+                },
+                {
+                    to: "/user/userlist",
+                    text: "我的粉丝"
+                },
+                {
+                    to: "/user/manage",
+                    text: "点赞"
+                },
+                {
+                    to: "/user/alter",
+                    text: "资料修改"
+                },
+                
+            ]
         }
     },
     methods: {
@@ -92,9 +104,8 @@ export default {
                     data: formData,
                     // callback: success
                 }).then(response => {
-                    console.log(response);
                     if(response.data.code != 404){
-                        this.message = '更行成功'
+                        this.message = '更新成功'
                         // this.reload()
                         this.$router.go(0)
                     }else{
@@ -107,21 +118,20 @@ export default {
         update: function(){
             document.getElementById('updateFile').click()
         },
-        
+        getItem:function(index){
+            // alert(item)
+            this.activeClass = index;
+        }
     },
     // 页面加载执行
     mounted() {
+        if(this.$route.query.item){
+            // alert(this.$route.query.item)
+            this.activeClass = this.$route.query.item;
+        }else{
+            this.activeClass = 0;
+        }
         this.$store.dispatch('getDetail')
-        // this.axios({
-        //     method: "get",
-        //     url: "/hello/test/getPicture"
-        //     }).then(response => {
-        //         if(response.data.code == 200){
-        //             this.picture = response.data.message
-        //         }else{
-        //             this.imgPath = response.data.message
-        //         }
-        //     })
         this.axios({
             method: "get",
             url: "/hello/trading/getCommodity",
@@ -148,16 +158,22 @@ export default {
         margin: 0 auto;
         background-color: #F5F6F7;
         max-width: 1300px;
+        clear: both;
+        margin-top: 30px;
     }
     .detail_left { 
+        clear: left;
         float: left;
-        position: relative;
+        /* position: relative; */
         top: 65px;
         width: 20%;
         background-color: #F5F6F7;
         font-size: 16px;
         color: black;
         margin: 5px;
+
+            /* border-right: 1px solid #e8e8e8; */
+
     } 
     .detail_data_left {
         padding-top: 10px;
@@ -194,16 +210,18 @@ export default {
     /* ================= 用户 table ==================== */
     .user_table {
         padding: 20px;
-        text-align: center;
-        width: 260px;
+        text-align: left;
+        width: 220px;
     }
-
+    .user_table p {
+        padding-left: 10px;
+    }
 
     .detail_right {
         /* float: left; */
         display:inline-block;
         position: relative;
-        width: 1000px;
+        width: 1020px;
         margin: 5px;
         /* background-color: rgb(255, 255, 255); */
         /* border-radius: 10px; */
@@ -220,25 +238,35 @@ export default {
     .detail_right .detail_right_header{
         /* float: left; */
         /* text-align: center; */
-        display: inline-block;
+        /* display: inline-block; */
         margin-top: 10px;
         margin-bottom: 10px;
         list-style-type: none;
         padding: 0 10px 0 10px;
         color: black;
         font-size: 16px;
+
+        height: 54px;
+        border-bottom: 1px solid #e8e8e8;
+        display: flex;
     }
-    .detail_right_header li {
-        float: left;
+    .detail_right_header a {
+        /* float: left;
+        letter-spacing: normal;
+        word-spacing: normal;
+        border: 1px solid; */
+    
+        margin: 0 15px;
+        height: 54px;
+        line-height: 54px;
+        color: #6f6f6f;
+
+        text-decoration-line: none;
     }
-    .detail_right_header .project{
-        width: 100px;
-    }
-    .detail_right_header .collections {
-        width: 100px;
-    }
-    .detail_right_header .apprecations {
-        width: 100px;
+    .active {
+        color: #222;
+        border-bottom: 1px #2b2b2b solid;
+
     }
     
 </style>

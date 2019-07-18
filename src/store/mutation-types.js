@@ -8,6 +8,8 @@ export const GETDETAIL = 'getdetail'
 
 export const GETPROJECTID = 'getprojectid'
 
+export const GETPROJECT = 'getproject'
+
 export const GETLABEL = 'getlabel'
 
 export const GETCATEGORIES = 'getcategories'

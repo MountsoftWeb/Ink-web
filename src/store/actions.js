@@ -5,6 +5,7 @@ import {
     LOGOUT,
     GETDETAIL,
     GETPROJECTID,
+    GETPROJECT,
     GETLABEL,
     GETCATEGORIES
 } from './mutation-types'
@@ -15,7 +16,7 @@ export default {
     // 登录 isLogin : 1
     getLogin({commit, state}, loginData){
         let success=(response)=>{
-            alert(response.data.msg);
+            // alert(response.data.msg);
         }
         axios({      
             method: "post",
@@ -31,7 +32,7 @@ export default {
                 // alert(response.data.token);
                 // alert(response.data.data);
                 commit(LOGIN, response.data.token);
-                alert(localStorage.getItem('token'))
+                // alert(localStorage.getItem('token'))
 
                 router.push({ path: '/' }) 
             }else{
@@ -67,14 +68,32 @@ export default {
     getProjectId({commit, data}, id){
         // getProjectId({commit, data}, projectId){
         axios({
-            method: "post",
-            url: "/hello/project/getAllProject?id=" + id,
+            method: "get",
+            url: "/hello/project/getAllProject?c=" + id[0] + "&l=" + id[1]
+        // + "&l=" + l,
          
             // data: id,
         }).then(response => {
             if(response.data.code == 200){
-                // console.log(id)
+                console.log(id[1])
+                // alert(id[0])
                 commit(GETPROJECTID, response.data.data)
+            }else{
+
+            }
+        })
+    },
+    // 获取用户所有作品
+    getProject({commit, data}){
+        axios({
+            method: "get",
+            url: "/hello/test/project/getProject",
+         
+            // data: id,
+        }).then(response => {
+            if(response.data.code == 200){
+                console.log(response.data.data)
+                commit(GETPROJECT, response.data.data)
             }else{
 
             }

@@ -33,6 +33,7 @@
       </div>
       <ul>
         <li>
+            <router-link to="/user/upload">上传作品</router-link>
             <router-link to="/user">自己</router-link>
             <router-link to="/login" class="login">登录</router-link>
         </li>

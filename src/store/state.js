@@ -8,5 +8,6 @@ export default {
     token: localStorage.getItem('token') ? localStorage.getItem('token') : '',
     projects: [],
     label: [],
-    categories: []
+    categories: [],
+    userProjects: []
 }

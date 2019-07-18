@@ -14,7 +14,17 @@
                 <dl>
                     <dt>类别</dt>
                     <dd>
-                        <router-link v-for="(category, index) in categories" :key="index" :to="{path:'/project', query:{id:category.id}}">{{category.category_name}}</router-link>
+                        <!-- <span :class="activeCategoryClass == index ? 'active':''" v-for="(category,index) in categories" :key="index" @click="getCategorie(index)">
+                            <router-link :to="{path:'/project', query:{id:category.id}}">{{category.category_name}}</router-link>
+                        </span> -->
+                        <router-link v-for="(category,index) in categories" 
+                            :key="category.value" 
+                            :to="{path:'/project', query:{c:category.id,l:activeLabelClass}}"
+                            :class="activeCategoryClass == category.id ? 'active':''"
+                            @click.native="getCategorie(category.id)" 
+                            > 
+                            {{category.category_name}}
+                        </router-link> 
                         
                     </dd>
                 </dl>
@@ -22,9 +32,16 @@
                 <dl>
                     <dt>标签</dt>
                     <dd>
-                        <div class="labels">
-                            <router-link v-for="(label, index) in label" :key="index" :to="{path:'/project', query:{id:label.id}}">{{label.label_name}}</router-link>
-                        </div>
+                        <!-- <span :class="activeLabelClass == index ? 'active':''" v-for="(label, index) in label" :key="index" @click="getLabel(index)">
+                            <router-link  :to="{path:'/project', query:{id:label.id}}">{{label.label_name}}</router-link>
+                        </span> -->
+                        <router-link v-for="(label, index) in label"
+                                    :key="label.value"
+                                    :to="{path:'/project', query:{c:activeCategoryClass,l:label.id}}"
+                                    :class="activeLabelClass == label.id ? 'active':''"
+                                    @click.native="getLabel(label.id)">
+                            {{label.label_name}}
+                        </router-link>
                     </dd>
                 </dl>
 
@@ -44,6 +61,12 @@
 import { mapState } from "vuex";
 
 export default {
+    data() {
+        return {
+            activeCategoryClass: 0,
+            activeLabelClass: 0
+        }
+    },
         // metaInfo: {
         //     title: "ds",
         //     meta: [
@@ -58,11 +81,28 @@ export default {
             // this.$route.push({name:'/project', params:{id:categories_id}})
 
             // this.$store.dispatch('getProjectId', categories_id)
+        },
+        getCategorie: function(index){
+            this.activeCategoryClass = index;
+        },
+        getLabel: function(index) {
+            this.activeLabelClass = index
         }
     },
     mounted() {
         this.$store.dispatch('getLabel')
         this.$store.dispatch('getCategories')
+        if(this.$route.query.c){
+            // alert(this.$route.query.item)
+            this.activeCategoryClass = this.$route.query.c
+        }else{
+            this.activeCategoryClass = 0;
+        }
+        if(this.$route.query.l) {
+            this.activeLabelClass = this.$route.query.l
+        }else{
+            this.activeLabelClass = 0
+        }
     },
     // computed: {
     //     ...mapState(['project'])
@@ -151,5 +191,9 @@ export default {
         padding: 10px;
         /* left: 8%; */
         width: 1280px;
+    }
+    .active {
+        background: red;
+        /* font-size: 200px; */
     }
 </style>

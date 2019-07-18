@@ -5,6 +5,7 @@ import {
     LOGOUT,
     GETDETAIL,
     GETPROJECTID,
+    GETPROJECT,
     GETLABEL,
     GETCATEGORIES
 } from './mutation-types'
@@ -25,6 +26,9 @@ export default {
     [GETPROJECTID] (state, data) {
         state.projects = data;
         // console.log(data)
+    },
+    [GETPROJECT] (state, data) {
+        state.userProjects = data;
     },
     [GETLABEL] (state, data) {
         state.label = data

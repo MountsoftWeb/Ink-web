@@ -65,7 +65,6 @@ let router = new Router({
       meta: {
         requireAuth: true
       }
-
     },
     // 用户详情
     {
@@ -82,8 +81,24 @@ let router = new Router({
         },
         {
           path: 'manage',
-          component: User.Manage,
+          component: User.Manage, // 作品管理
           // component: User.Detail.Manage,
+        },
+        {
+          path: 'upload',
+          component: User.Upload  // 文件上传
+        },
+        {
+          path: 'userlist',
+          component: User.Userlist  // 关注/粉丝
+        },
+        {
+          path: 'collect',
+          component: User.Upload // 收藏/点赞
+        },
+        {
+          path: 'alter',
+          component: User.Alter   // 资料修改
         }
       ]
 
@@ -139,8 +154,8 @@ let router = new Router({
     },
 
     {
-      path: '/a',
-      name: 'a',
+      path: '/upProject',
+      name: 'upProject',
       component: tets2
     }
     // {
