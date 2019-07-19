@@ -11,7 +11,9 @@ body, html {
     overflow: hidden;
     display: block;
     /*background-color: #e8ebed;*/
-    background: #fafafa;
+    /* background: #fafafa; */
+    background-color: #F5F6F7;
+
 
   }
   

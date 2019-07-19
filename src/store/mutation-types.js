@@ -13,3 +13,5 @@ export const GETPROJECT = 'getproject'
 export const GETLABEL = 'getlabel'
 
 export const GETCATEGORIES = 'getcategories'
+
+export const GETPROJECTDETAIL = 'getprojectdetail'

@@ -7,7 +7,8 @@ import {
     GETPROJECTID,
     GETPROJECT,
     GETLABEL,
-    GETCATEGORIES
+    GETCATEGORIES,
+    GETPROJECTDETAIL
 } from './mutation-types'
 import axios from '../axios/http'
 import router from './../router'
@@ -117,6 +118,15 @@ export default {
             // if (response.data.code == 200){
                 commit(GETLABEL, response.data.data)
             // }
+        })
+    },
+    // 获取作品相关信息 projectId
+    getProjectDetail({commit, data}, projectId) {
+        axios({
+            method: "get",
+            url: "/hello/project/getProjectDetail?projectId=" + projectId
+        }).then(response => {
+            commit(GETPROJECTDETAIL, response.data.data)
         })
     }
 }

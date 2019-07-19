@@ -2,17 +2,18 @@
     <div>    
         <!-- 物品展示 -->
         <h1>project</h1>
-        <div v-for="(project, index) in projects" :key="index" class="project_content">
+        <div v-for="(project, index) in projects" :key="index" class="project_content" @click="chooseProject(project.id)">
             <ul class="project_content_main">
                 <li><img :src="project.picture"></li>
                 <!-- <li><img :src="{{object.picture}}"></li> -->
                 <li>
                     <span>详情{{project.id}}</span>
                 </li>
-                <li>喜欢{{project.id}}</li>
+                <li>喜欢{{project.apprecations}}</li>
 
                 <li>上传日期{{project.id}}</li>
                 <li>所属用户{{project.id}}</li>
+
                 <!-- <li>
                     <input id="delete" type="button" @click="deleteId(object.id)" value="详细信息"></input>
                 </li> -->
@@ -45,7 +46,10 @@ export default {
     methods: {
         show: function() {
             this.$store.dispatch('getProjectId', [this.$route.query.c, this.$route.query.l])
-
+        },
+        chooseProject: function(index) {
+            let routeData = this.$router.resolve({path:'/tools/detail', query:{projectId:index} })
+             window.open(routeData.href, '_blank');
         }
     },
     created() {

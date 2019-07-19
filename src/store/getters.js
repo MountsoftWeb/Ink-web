@@ -8,5 +8,6 @@ export default {
     getProjectId: state => state.projects,
     getLabel: state => state.label,
     getCategories: state => state.categories,
-    getProject: state => state.userProjects // 用户所有作品
+    getProject: state => state.userProjects, // 用户所有作品
+    getProjectDetail: state => state.projectDetail
 }

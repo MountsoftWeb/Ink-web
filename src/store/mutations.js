@@ -7,7 +7,8 @@ import {
     GETPROJECTID,
     GETPROJECT,
     GETLABEL,
-    GETCATEGORIES
+    GETCATEGORIES,
+    GETPROJECTDETAIL
 } from './mutation-types'
 
 export default {
@@ -35,5 +36,8 @@ export default {
     },
     [GETCATEGORIES] (state, data) {
         state.categories = data
+    },
+    [GETPROJECTDETAIL] (state, data) {
+        state.projectDetail = data
     }
 }

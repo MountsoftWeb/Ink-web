@@ -9,5 +9,6 @@ export default {
     projects: [],
     label: [],
     categories: [],
-    userProjects: []
+    userProjects: [],
+    projectDetail: []
 }

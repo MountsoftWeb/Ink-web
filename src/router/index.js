@@ -11,6 +11,7 @@ import Trading from '@/views/trading'           // 物品交易
 import Test2 from '@/views/community'           // 社团
 import User from '@/views/user'                 // 用户详情
 import Project from '@/views/project'           // 项目
+import Tools from '@/views/tools'               // 工具
 
 import store from '@/store/index'
 
@@ -27,7 +28,7 @@ let router = new Router({
       path: '/',
       name: 'Layout',
       component: LayoutNoLeft,
-
+      
     },
     
     {
@@ -64,7 +65,13 @@ let router = new Router({
       component: Project,
       meta: {
         requireAuth: true
-      }
+      },
+      children: [
+        {
+          path: 'detail',
+          component: Project.Detail
+        }
+      ]
     },
     // 用户详情
     {
@@ -128,7 +135,21 @@ let router = new Router({
         // }
       ]
     },
-
+    // 工具模块
+    {
+      path: '/tools',
+      name: 'tools',
+      component: Tools,
+      meta: {
+        requireAuth: true
+      },
+      children: [
+        {
+          path: 'detail',
+          component: Tools.Detail
+        }
+      ]
+    },
     // 社团活动模块
     {
       path: '/test2',
