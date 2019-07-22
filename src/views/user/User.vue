@@ -42,6 +42,8 @@
             <br>
             <!-- 物品展示 -->
             <router-view></router-view>
+
+            
         </div>
         
     </div>
@@ -71,7 +73,7 @@ export default {
                 },
                 
                 {
-                    to: "/user/userlist",
+                    to:"/user/userlist",
                     text: "我的关注"
                 },
                 {
@@ -132,22 +134,23 @@ export default {
             this.activeClass = 0;
         }
         this.$store.dispatch('getDetail')
-        this.axios({
-            method: "get",
-            url: "/hello/trading/getCommodity",
-        }).then(response => {
-            if (response.data.code == 200){
-                // alert(response.data)
-                this.items = response.data.data
-            }else{
-
-            }
-        })
-
     },
     computed: {
         ...mapState(['user'])
-  }
+    },
+    watch: {
+        '$route' (to, from) {
+            // 2 获取关注 3 获取粉丝
+            // this.$route.query.item
+            if (this.$route.query.item == 3){
+                alert("粉丝")
+            }
+            if (this.$route.query.item == 2){
+                alert("关注")
+            }
+            
+        }
+    }
 
 }
 </script>

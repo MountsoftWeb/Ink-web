@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div v-for="(project, index) in userProjects" :key="index" class="manage_container">
+  <div v-for="(project, index) in userProjects.list" :key="index" class="manage_container">
     <div class="manage_left">
       <img id="project_image" :src="project.picture">
     </div>

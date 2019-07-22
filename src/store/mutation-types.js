@@ -15,3 +15,9 @@ export const GETLABEL = 'getlabel'
 export const GETCATEGORIES = 'getcategories'
 
 export const GETPROJECTDETAIL = 'getprojectdetail'
+
+export const GETPAGE = 'getpage'
+
+export const GETFOLLOWS = 'getfollows'
+
+export const GETFANS = 'getfans'

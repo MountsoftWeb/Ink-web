@@ -52,6 +52,7 @@
             <div class="project_content">
                 <!-- <router-view></router-view> -->
                 <project-list></project-list>
+                
             </div>
         </div>
     </b-layout-no-left>
@@ -87,7 +88,8 @@ export default {
         },
         getLabel: function(index) {
             this.activeLabelClass = index
-        }
+        },
+        
     },
     mounted() {
         this.$store.dispatch('getLabel')
@@ -109,7 +111,7 @@ export default {
     // }
     computed: {
         ...mapState(['label']),
-        ...mapState(['categories'])
+        ...mapState(['categories']),
     }
 }
 </script>

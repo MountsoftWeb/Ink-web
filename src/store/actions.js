@@ -8,7 +8,9 @@ import {
     GETPROJECT,
     GETLABEL,
     GETCATEGORIES,
-    GETPROJECTDETAIL
+    GETPROJECTDETAIL,
+    GETFOLLOWS,
+    GETFANS
 } from './mutation-types'
 import axios from '../axios/http'
 import router from './../router'
@@ -67,17 +69,19 @@ export default {
     },
     // 按照 项目 id 获取
     getProjectId({commit, data}, id){
-        // getProjectId({commit, data}, projectId){
+        // id[category, label, pageNum]
         axios({
             method: "get",
-            url: "/hello/project/getAllProject?c=" + id[0] + "&l=" + id[1]
+            url: "/hello/project/getAllProject?c=" + id[0] + "&l=" + id[1] + "&pageNum=" + id[2]
         // + "&l=" + l,
          
             // data: id,
         }).then(response => {
             if(response.data.code == 200){
-                console.log(id[1])
+                // console.log(id[1])
                 // alert(id[0])
+                // commit(GETPAGE, response.data.data)
+
                 commit(GETPROJECTID, response.data.data)
             }else{
 
@@ -88,12 +92,12 @@ export default {
     getProject({commit, data}){
         axios({
             method: "get",
-            url: "/hello/test/project/getProject",
+            url: "/hello/test/project/getProject?pageNum=" + 1,
          
             // data: id,
         }).then(response => {
             if(response.data.code == 200){
-                console.log(response.data.data)
+                // console.log(response.data.data)
                 commit(GETPROJECT, response.data.data)
             }else{
 
@@ -127,6 +131,24 @@ export default {
             url: "/hello/project/getProjectDetail?projectId=" + projectId
         }).then(response => {
             commit(GETPROJECTDETAIL, response.data.data)
+        })
+    },
+
+    // 获取关注
+    getFollows({commit, data}, userId) {
+        axios({
+            method: "get",
+            url: "/hello/user/getFollows?userId=" + userId
+        }).then(response => {
+            commit(GETFOLLOWS, response.data.data)
+        })
+    },
+    getFans({commit, data}){
+        axios({
+            method: "get",
+            url: "/hello/user/getFans?userId=" + userId
+        }).then(response => {
+            commit(GETFANS, response.data.data)
         })
     }
 }

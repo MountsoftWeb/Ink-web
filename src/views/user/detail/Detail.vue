@@ -1,7 +1,7 @@
 <template>  
     <div>    
         <!-- 物品展示 -->
-        <div v-for="object in items" class="detail_content">
+        <div v-for="object in items.list" class="detail_content">
             <ul class="detail_content_main">
                 <li><img :src="object.picture"></li>
                 <!-- <li><img :src="{{object.picture}}"></li> -->
@@ -15,7 +15,32 @@
                     <input id="delete" type="button" @click="deleteId(object.id)" value="删除"></input>
                 </li>
             </ul>    
-            
+        </div>
+        <div class="page">
+            <ul>
+                <li class="page_item" v-if="items.pageNum != 1">
+                    <router-link
+                                :to="{path:'/user', query:{pageNum:items.pageNum - 1}}"
+                                >
+                                上一页</router-link>
+                </li>
+                <li class="page_item"
+                    v-for="(page, index) in items.array "
+                    v-if="page <= items.totalPage"
+                    :key="index"
+                    v-bind:class="{ 'page_active': items.pageNum == page}"
+                    >
+                        <a class="page_btn" v-on:click="page_btn(page)">{{ page}}</a>
+                </li>
+                <li class="page_item" v-if="items.totalPage != items.pageNum">
+                    <router-link 
+                                :to="{path:'/user', query:{pageNum:items.pageNum + 1}}">
+                                下一页</router-link>
+                </li>
+                <li class="page_item">
+                    <span>共&nbsp;{{items.totalPage}}&nbsp;页</span>
+                </li>
+            </ul>
         </div>
     </div>
 </template>
@@ -37,6 +62,19 @@ export default {
         // 删除
         deleteId(a) {
             alert(a)
+        },
+        aaa: function() {
+            this.axios({
+            method: "get",
+            url: "/hello/test/project/getProject?pageNum=" + this.$route.query.pageNum,
+        }).then(response => {
+            if (response.data.code == 200){
+                console.log(response.data.data)
+                this.items = response.data.data
+            }else{
+
+            }
+        })
         }
         
     },
@@ -55,17 +93,21 @@ export default {
         //     })
         this.axios({
             method: "get",
-            url: "/hello/test/project/getProject",
+            url: "/hello/test/project/getProject?pageNum=" + this.$route.query.pageNum,
         }).then(response => {
             if (response.data.code == 200){
-                // alert(response.data)
+                // console.log(response.data.data)
                 this.items = response.data.data
             }else{
 
             }
         })
-
     },
+    watch: {
+        '$route' (to, from) {
+            this.aaa()
+        }
+    }
  
 
 }
@@ -153,5 +195,66 @@ export default {
     .detail_content_main li img {    
         width: 296px; 
         height: 260px;
+    }
+
+    .page {
+        float: left;
+        min-width: 900px;
+        margin: 20px 0 20px 0;
+        text-align: center;
+    }
+    .page ul {
+        display: inline-block;
+        list-style-type: none;
+        list-style: none;
+    }
+    .page ul li {
+        float: left;
+        background: #fff;
+    }
+/*
+        font-size: 14px;
+        padding: 6px 10px;
+        border: 1px solid #ccc;
+        color: #888;
+        margin: 0 3px;
+        text-decoration: none;
+        border-radius: 5px;
+    } */
+    .page ul li a {
+        text-decoration: none;
+        color: #000;
+    }
+    .page_item {
+        font-size: 14px;
+        padding: 6px 10px;
+        background: #fff;
+        border: 1px solid #ccc;
+        color: #888;
+        margin: 0 3px;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+    .page_btn {
+        cursor: pointer;
+    }
+    /* .page ul li:nth-child(1) {
+        font-size: 14px;
+        padding: 6px 10px;
+        background: #fff;
+        border: 1px solid #ccc;
+        color: #888;
+        margin: 0 3px;
+        text-decoration: none;
+        border-radius: 5px;
+    } */
+    .page_active {
+        background: #333;
+        border-color: #333;
+        color: #fff;
+        cursor: default;
+    }
+    .page_display {
+        display: none;
     }
 </style>

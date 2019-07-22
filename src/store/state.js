@@ -10,5 +10,10 @@ export default {
     label: [],
     categories: [],
     userProjects: [],
-    projectDetail: []
+    projectDetail: [],
+
+    page: {},
+
+    follows: {},
+    fans: {}
 }

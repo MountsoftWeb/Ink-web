@@ -8,7 +8,10 @@ import {
     GETPROJECT,
     GETLABEL,
     GETCATEGORIES,
-    GETPROJECTDETAIL
+    GETPROJECTDETAIL,
+    GETPAGE,
+    GETFOLLOWS,
+    GETFANS
 } from './mutation-types'
 
 export default {
@@ -39,5 +42,17 @@ export default {
     },
     [GETPROJECTDETAIL] (state, data) {
         state.projectDetail = data
+    },
+
+    //  分页
+    [GETPAGE] (state, data) {
+        state.page = data;
+    },
+
+    [GETFOLLOWS] (state, data) {
+        state.follows = data;
+    },
+    [GETFANS] (state, data) {
+        state.fans = data
     }
 }
