@@ -10,7 +10,9 @@ import {
     GETCATEGORIES,
     GETPROJECTDETAIL,
     GETFOLLOWS,
-    GETFANS
+    GETFANS,
+    GETHOTPROJECT,
+    GETHOTUSER
 } from './mutation-types'
 import axios from '../axios/http'
 import router from './../router'
@@ -89,10 +91,10 @@ export default {
         })
     },
     // 获取用户所有作品
-    getProject({commit, data}){
+    getProject({commit, data}, pageNum){
         axios({
             method: "get",
-            url: "/hello/test/project/getProject?pageNum=" + 1,
+            url: "/hello/test/project/getProject?pageNum=" + pageNum,
          
             // data: id,
         }).then(response => {
@@ -149,6 +151,24 @@ export default {
             url: "/hello/user/getFans?userId=" + userId
         }).then(response => {
             commit(GETFANS, response.data.data)
+        })
+    },
+
+    // 获取热们作品 热门用户
+    getHotProject({commit, data}) {
+        axios({
+            method: "get",
+            url: "/hello/project/getHotProject"
+        }).then(response => {
+            commit(GETHOTPROJECT, response.data.data)
+        })
+    },
+    getHotUser({commit, data}) {
+        axios({
+            method: "get",
+            url: "/hello/user/getHotUser"
+        }).then(response => {
+            commit(GETHOTUSER, response.data.data)
         })
     }
 }

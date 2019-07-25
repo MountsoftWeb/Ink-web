@@ -9,6 +9,9 @@ import Meta from 'vue-meta'
 import axios from './axios/http'
 import store from './store/index'
 
+// import ElementUI from 'element-ui';
+// import 'element-ui/lib/theme-chalk/index.css';
+
 // 注册全局组件
 import MyPlugin from './assets/js/plugin'
 
@@ -18,6 +21,7 @@ Vue.config.productionTip = false
 
 Vue.use(MyPlugin)
 Vue.use(Meta)
+// Vue.use(ElementUI)
 
 Vue.prototype.axios = axios;
 // Vue.use(VueAxios,axios)

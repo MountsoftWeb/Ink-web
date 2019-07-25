@@ -64,14 +64,13 @@ export default {
             activeClass: 0, // 0为默认选择第一个，-1为不选择
             itemList: [
                 {
-                    to: "/user/upload",
-                    text: "上传作品"
-                },
-                {
                     to: "/user/manage",
                     text: "作品管理"
                 },
-                
+                {
+                    to: "/user/upload",
+                    text: "上传作品"
+                },
                 {
                     to:"/user/userlist",
                     text: "我的关注"

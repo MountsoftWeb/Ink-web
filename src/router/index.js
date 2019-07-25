@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/views/HelloWorld.vue'
 import Layout from '@/components/layout/Layout'
 import LayoutNoLeft from '@/components/layout/LayoutNoLeft'
-import Test from '@/views/test.vue'
+import First from '@/views/first.vue'
 
 import Login from '@/views/Login'
 
@@ -27,8 +27,13 @@ let router = new Router({
     {
       path: '/',
       name: 'Layout',
-      component: LayoutNoLeft,
-      
+      component: First,
+      // children: [
+      //   {
+      //     path: '',
+      //     component: First
+      //   }        
+      // ]
     },
     
     {
@@ -38,7 +43,7 @@ let router = new Router({
       children:[
         {
           path: 'a',
-          component: Test
+          component: First
         },
         {
           path: 'b',
@@ -84,7 +89,7 @@ let router = new Router({
       children: [
         {
           path: '',
-          component: User.Detail, // 默认展示所有作品，个人，点赞，收藏
+          component: User.Manage, // 默认展示所有作品，个人，点赞，收藏
         },
         {
           path: 'manage',
@@ -101,7 +106,7 @@ let router = new Router({
         },
         {
           path: 'collect',
-          component: User.Upload // 收藏/点赞
+          component: User.Detail // 收藏/点赞
         },
         {
           path: 'alter',
@@ -163,7 +168,7 @@ let router = new Router({
         },
         {
           path: 'b',
-          component: Test
+          component: First
         }
       ]
     },

@@ -15,5 +15,8 @@ export default {
     page: {},
 
     follows: {},
-    fans: {}
+    fans: {},
+
+    hotProjects: {},
+    hotUsers: {}
 }

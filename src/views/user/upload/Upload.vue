@@ -12,7 +12,7 @@
     </p>
     <p>
       <span class="describe_span">描述：</span>
-      <textarea name="describe" id="describe" class="name_text" placeholder="" style="width:450px; height:100px;padding: 10px; "></textarea>
+      <textarea name="describe" id="describe" class="name_text" v-model.trim="state" placeholder="" style="width:450px; height:100px;padding: 10px; "></textarea>
     </p>
     <p >
       <span>绘画方式：</span>
@@ -23,7 +23,7 @@
       <span>标签：</span>
         <input type="text" name="label" v-model.trim="label">
       <p>
-      <input type="button" v-on:click='change_input' value="上传">
+      <input class="upload_btn" type="button" v-on:click='change_input' value="上传">
       </p>
   </div>
     <!-- <input type="text" v-model.trim="projectData.name" name="name" placeholder="name">
@@ -53,7 +53,7 @@ export default {
         name: '',
         paintingwayId: 1,
         label: '',
-        describe: ''
+        state: ''
     }
   },
   methods:{
@@ -63,6 +63,7 @@ export default {
             var formData = new FormData()
             formData.append('name', self.name)
             formData.append('label', self.label)
+            formData.append('state', self.state)
             formData.append('paintingwayId', self.paintingwayId)
             formData.append('image_data', self.$refs.upload_file.files[0])
 
@@ -79,7 +80,9 @@ export default {
                     // this.reload()
                     this.$router.go(0)
                 }else{
+                  alert("上传失败")
                     this.message = '更新失败'
+
                 }
             })
         }
@@ -139,5 +142,9 @@ export default {
     padding-top: 20px;
     display: block;
 
+  }
+  .upload_btn {
+    width: 300px;
+    height: 50px;
   }
 </style>

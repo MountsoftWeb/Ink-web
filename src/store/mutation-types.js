@@ -21,3 +21,7 @@ export const GETPAGE = 'getpage'
 export const GETFOLLOWS = 'getfollows'
 
 export const GETFANS = 'getfans'
+
+export const GETHOTPROJECT = 'gethotproject'
+
+export const GETHOTUSER = 'getuser'

@@ -53,3 +53,6 @@
 
 $ npm install vue-meta --save
 
+加入 npm element-ui -S
+
+加入 Meta

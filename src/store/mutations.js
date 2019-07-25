@@ -11,7 +11,9 @@ import {
     GETPROJECTDETAIL,
     GETPAGE,
     GETFOLLOWS,
-    GETFANS
+    GETFANS,
+    GETHOTPROJECT,
+    GETHOTUSER
 } from './mutation-types'
 
 export default {
@@ -54,5 +56,13 @@ export default {
     },
     [GETFANS] (state, data) {
         state.fans = data
+    },
+
+    // 热门作品 热门用户
+    [GETHOTPROJECT] (state, data) {
+        state.hotProjects = data
+    },
+    [GETHOTUSER] (state, data) {
+        state.hotUsers = data
     }
 }

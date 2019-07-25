@@ -7,12 +7,12 @@
                 <li><img :src="project.picture"></li>
                 <!-- <li><img :src="{{object.picture}}"></li> -->
                 <li>
-                    <span>详情{{project.id}}</span>
+                    <span>详情:&nbsp;{{project.name}}</span>
                 </li>
                 <li>喜欢{{project.apprecations}}</li>
 
-                <li>上传日期{{project.id}}</li>
-                <li>所属用户{{project.id}}</li>
+                <li>上传日期:&nbsp;{{project.upDate}}</li>
+                <li>所属用户:&nbsp;{{project.userName}}</li>
 
                 <!-- <li>
                     <input id="delete" type="button" @click="deleteId(object.id)" value="详细信息"></input>
@@ -158,8 +158,8 @@ export default {
     .project_content_main li:nth-child(4){
         /* position: relative; */
         /* left: 100px; */
-        width: 100px;
-        padding-right: 50px;
+        width: 150px;
+        /* padding-right: 50px; */
         border-bottom: solid 1px;
         /* width: 120px; */
         /* padding-left: 550px; */

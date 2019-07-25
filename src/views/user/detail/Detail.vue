@@ -80,17 +80,6 @@ export default {
     },
     // 页面加载执行
     mounted() {
-        // this.$store.dispatch('getDetail')
-        // this.axios({
-        //     method: "get",
-        //     url: "/hello/test/getPicture"
-        //     }).then(response => {
-        //         if(response.data.code == 200){
-        //             this.picture = response.data.message
-        //         }else{
-        //             this.imgPath = response.data.message
-        //         }
-        //     })
         this.axios({
             method: "get",
             url: "/hello/test/project/getProject?pageNum=" + this.$route.query.pageNum,

@@ -14,5 +14,8 @@ export default {
     getPage: state => state.page,
 
     getFollows: state => state.follows,
-    getFans: state => state.fans
+    getFans: state => state.fans,
+
+    getHotProject: state => state.hotProjects,
+    getHotUser: state => state.hotUsers
 }
