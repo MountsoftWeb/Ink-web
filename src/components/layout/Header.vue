@@ -27,13 +27,13 @@
     </div>
 
     <div class="header-right">
-      <div class="box">
+      <!-- <div class="box">
         <input type="text" id="search" placeholder="宝贝、商家、店铺">
         <button type="button">搜索</button>
-      </div>
+      </div> -->
       <ul>
         <li>
-            <router-link to="/user/upload">上传作品</router-link>
+            <!-- <router-link to="/user/upload">上传作品</router-link> -->
             <router-link to="/user">自己</router-link>
             <router-link to="/login" class="login">登录</router-link>
         </li>
@@ -84,7 +84,8 @@ export default {
   }
   .header {
     /* position: fixed; */
-    width: 100%;
+    /* width: 100%; */
+    min-width: 1300px;
     height: 60px;
     /* background-color: rgb(49, 47, 47); */
     background-image: linear-gradient(to right, #434343 0%, black 100%);
@@ -133,7 +134,7 @@ export default {
   }
   /* 登录 */
   .header > .header-right ul li {
-    text-decoration: none;
+    /* text-decoration: none; */
     text-align: center;
     line-height: 60px;
     color: white;

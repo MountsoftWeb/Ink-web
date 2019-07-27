@@ -150,7 +150,7 @@
         },
         
         change: function(index){
-    console.log(index);
+    // console.log(index);
 },
 
             // alert(localStorage.getItem('token'))

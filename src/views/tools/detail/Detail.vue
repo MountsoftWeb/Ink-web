@@ -38,11 +38,18 @@
             </div>
 
             <div class="detail_appreciate">
-                <span>点赞: {{projectDetail.apprecations}}</span>
+                <span>点赞: {{projectDetail.apprecations}} </span>
+                    <input class="appreciate_btn" v-show="projectDetail.status != 1" type="button" value="点赞" id="appreciate" @click="chooseAppreciate(projectDetail.status)">
+                    <input class="appreciate_btn" v-show="projectDetail.status == 1" type="button" value="取消点赞" id="appreciate" @click="chooseAppreciate(projectDetail.status)">
             </div>
 
             <div class="detail_comment">
-                <span>评论</span>
+                <p>评论</p>
+                <div class="detail_comment_text">
+                    <textarea name="comment" id="comment" class="comment_text" v-model.trim="comment" placeholder="" style="width:800px; height:100px;padding: 10px; "></textarea>
+                    <input type="button" value="发布">
+
+                </div>
             </div>
         </div>
 
@@ -53,9 +60,27 @@
 <script>
 import {mapState} from "vuex"
 export default {
-
+    data() {
+        return {
+            comment: ''
+        }
+    },
+    methods: {
+        chooseAppreciate: function(index) {
+            if (index == null){
+                // 发送点赞请求
+                this.$store.dispatch('updataAppreciate', [this.$route.query.projectId, 2])
+            }else if (index == 0){
+                // 发送取消点赞请求
+                this.$store.dispatch('updataAppreciate', [this.$route.query.projectId, 1])
+            }else {
+                // 发送点赞请求
+                this.$store.dispatch('updataAppreciate', [this.$route.query.projectId, 0])
+            }
+            
+        },
+    },
     mounted() {
-        // alert(this.$route.query.projectId)
         this.$store.dispatch('getProjectDetail', this.$route.query.projectId)
         
     },
@@ -121,9 +146,56 @@ export default {
         color: black;
         padding: 0 50px 20px 50px;
     }
+    .detail_appreciate span {
+        float: left;
+    }
+    .appreciate_btn {
+        cursor: pointer;
+        display: inline-block;
+        font-weight: 800;
+        text-align: center;
+        margin-left: 100px;
+
+        line-height: 34px;
+        color: #fff;
+        background: #ff3131;
+        width: 100px;
+        height: 34px;
+        display: block;
+        text-align: center;
+        border-radius: 3px;
+
+    }
     /* ============= 评论 ============ */
     .detail_comment {
         min-height: 100px;
         padding: 0 50px 20px 50px;
+    }
+    .detail_comment p {
+        /* width: 1300px; */
+        color: black;
+        /* font-weight: 200; */
+        border-bottom: 1px solid #e8e8e8;
+    }
+    .detail_comment_text {
+        padding-top: 20px;
+        width: 1000px;
+    }
+    input, textarea {
+        font-size: 14px;
+        resize: none;
+    }
+    .comment_text {
+        margin-left: 100px;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #495057;
+        background-color: #fff;
+        background-image: none;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        /* border-radius: .25rem; */
+        transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     }
 </style>

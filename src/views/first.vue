@@ -1,28 +1,22 @@
 <template>
 <b-layout-no-left>
     <div class="block">
-    <span class="demonstration">默认 Hover 指示器触发</span>
-    <el-carousel height="150px">
+    <!-- <span class="demonstration">默认 Hover 指示器触发</span> -->
+    <el-carousel height="550px">
       <el-carousel-item v-for="item in 4" :key="item">
-        <h3 class="small">{{ item }}</h3>
+        <!-- <h3 class="small">{{ item }}</h3> -->
+        <img id="carousel_img" src="./carlos.jpg">
       </el-carousel-item>
     </el-carousel>
   </div>
-  <div class="block">
-    <span class="demonstration">Click 指示器触发</span>
-    <el-carousel trigger="click" height="150px">
-      <el-carousel-item v-for="item in 4" :key="item">
-        <h3 class="small">{{ item }}</h3>
-      </el-carousel-item>
-    </el-carousel>
-  </div>
+
 
 
     <div class="first">
         <div class="hot_project_contain">
             <span class="hot_project_title">热门作品</span>
             <div v-for="object in hotProjects" class="hot_project">
-                <ul class="hot_project_main">
+                <ul class="hot_project_main" @click="chooseProject(object.id)">
                     <li><img :src="object.picture"></li>
                     <!-- <li><img :src="{{object.picture}}"></li> -->
                     <li>详情{{object.message}}</li>
@@ -45,7 +39,12 @@
 <script>
 import { mapState } from "vuex"
 export default {
-    
+    methods: {
+        chooseProject: function(index) {
+            let routeData = this.$router.resolve({path:'/tools/detail', query:{projectId:index} })
+            window.open(routeData.href, '_blank');
+        }
+    },
     mounted() {
         this.$store.dispatch('getHotProject')
         this.$store.dispatch('getHotUser')
@@ -71,21 +70,23 @@ export default {
         max-width: 1300px;
         /* margin: 0 10% 0 10%; */
     }
-.el-carousel__item h3 {
-    color: #475669;
-    font-size: 14px;
-    opacity: 0.75;
-    line-height: 150px;
-    margin: 0;
-  }
+    /* =========== 轮播条 ============== */
+    .el-carousel__item {
+       text-align: center;
+    }
 
-  .el-carousel__item:nth-child(2n) {
-     background-color: #99a9bf;
-  }
-  
-  .el-carousel__item:nth-child(2n+1) {
-     background-color: #d3dce6;
-  }
+    .el-carousel__item:nth-child(n) {
+        background-color: #303030;
+    }
+    
+    .el-carousel__item:nth-child(2n+1) {
+        /* background-color: #d3dce6; */
+    }
+    #carousel_img {
+        padding: 20px 0 10px 0;
+        width: 1300px;
+        height: 500px;
+    }
     /* =========== 热门作品 ============== */
     .hot_project_contain {
         display: inline-block;
@@ -115,6 +116,9 @@ export default {
         width: 100%;
         padding: 2px;
         
+    }
+    .hot_project_main:hover {
+        cursor: pointer;
     }
     .hot_project_main li {
         float: left;

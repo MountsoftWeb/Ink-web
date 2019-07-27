@@ -1,10 +1,11 @@
 <template>
 <div class="upload_content">
-  <div class="upload_header">
+  <div class="upload_header" @click="upload">
     <p>点击上传，或将文件拖拽到此处</p>
     <input id="upProject" type="file" ref="upload_file" >
      
   </div>
+  
   <div class="upload_main">
     <p >
       <span>标题：</span>
@@ -86,6 +87,9 @@ export default {
                 }
             })
         }
+    },
+    upload: function() {
+      document.getElementById('upProject').click()
     }
   }
 
@@ -109,7 +113,7 @@ export default {
     cursor: pointer;
     color: #999;
   }
-  .upProject {
+  #upProject {
     display: none!important;
   }
   .upload_main {

@@ -40,7 +40,8 @@
                                     :to="{path:'/project', query:{c:activeCategoryClass,l:label.id}}"
                                     :class="activeLabelClass == label.id ? 'active':''"
                                     @click.native="getLabel(label.id)">
-                            {{label.label_name}}
+                            
+                            <el-tag type="info">{{label.label_name}}</el-tag>
                         </router-link>
                     </dd>
                 </dl>

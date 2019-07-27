@@ -4,13 +4,14 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Meta from 'vue-meta'
+
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 // import axios from 'axios'
 // import VueAxios from 'vue-axios'
 import axios from './axios/http'
 import store from './store/index'
 
-// import ElementUI from 'element-ui';
-// import 'element-ui/lib/theme-chalk/index.css';
 
 // 注册全局组件
 import MyPlugin from './assets/js/plugin'
@@ -21,8 +22,7 @@ Vue.config.productionTip = false
 
 Vue.use(MyPlugin)
 Vue.use(Meta)
-// Vue.use(ElementUI)
-
+Vue.use(ElementUI)
 Vue.prototype.axios = axios;
 // Vue.use(VueAxios,axios)
 // axios.defaults.baseURL = 'https://localhost:8090/api'
@@ -34,10 +34,11 @@ Vue.prototype.axios = axios;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
-  axios,
+  // axios,
   store,
   router,
-  Meta,
+  // Meta,
+  
   render: h => h(App),
   
 })

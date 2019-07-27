@@ -130,7 +130,7 @@ export default {
     getProjectDetail({commit, data}, projectId) {
         axios({
             method: "get",
-            url: "/hello/project/getProjectDetail?projectId=" + projectId
+            url: "/hello/test/project/getProjectDetail?projectId=" + projectId
         }).then(response => {
             commit(GETPROJECTDETAIL, response.data.data)
         })
@@ -169,6 +169,15 @@ export default {
             url: "/hello/user/getHotUser"
         }).then(response => {
             commit(GETHOTUSER, response.data.data)
+        })
+    },
+    // 点赞判断
+    updataAppreciate({commit, data}, status) {
+        axios({
+            method: "get",
+            url: "/hello/test/project/updataAppreciate?projectId=" + status[0] + "&status=" + status[1], 
+        }).then(response => {
+            router.go(0)
         })
     }
 }
