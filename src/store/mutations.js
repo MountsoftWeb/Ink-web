@@ -13,7 +13,8 @@ import {
     GETFOLLOWS,
     GETFANS,
     GETHOTPROJECT,
-    GETHOTUSER
+    GETHOTUSER,
+    GETCOMMENTLISTBYPROJECTID,
 } from './mutation-types'
 
 export default {
@@ -64,5 +65,10 @@ export default {
     },
     [GETHOTUSER] (state, data) {
         state.hotUsers = data
+    },
+
+    // 按照作品 ID 获取相关评论
+    [GETCOMMENTLISTBYPROJECTID] (state, data) {
+        state.commentList = data
     }
 }

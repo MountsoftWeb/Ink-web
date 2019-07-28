@@ -19,6 +19,8 @@
                         <p>
                             <span>粉丝：{{projectDetail.fans}}</span>
                         </p>
+                    <input type="button" value="关注">
+
                     </div>
 
 
@@ -46,11 +48,26 @@
             <div class="detail_comment">
                 <p>评论</p>
                 <div class="detail_comment_text">
-                    <textarea name="comment" id="comment" class="comment_text" v-model.trim="comment" placeholder="" style="width:800px; height:100px;padding: 10px; "></textarea>
-                    <input type="button" value="发布">
+                    <textarea name="comment" id="comment" class="comment_text" v-model.trim="content" placeholder="" style="width:800px; height:100px;padding: 10px; "></textarea>
+                    <input type="button" value="发布" @click="sendComment()">
 
                 </div>
             </div>
+            <div class="detail_comment_list">
+                <div    v-for="(comment, index) in commentList"
+                        class="comment_content">
+                    <div class="comment_list_picture">
+                        <img :src="comment.picture">
+                    </div>
+                    <div class="comment_content_detail">
+                        <span style="font-size: 15px; color: black;">{{comment.username}}</span>
+                        <span style="font-size: 15px;">{{comment.commentTime}}</span>
+                        <p>{{comment.content}}</p>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
 
         
@@ -62,7 +79,7 @@ import {mapState} from "vuex"
 export default {
     data() {
         return {
-            comment: ''
+            content: ''
         }
     },
     methods: {
@@ -79,13 +96,38 @@ export default {
             }
             
         },
+        // 发送评论
+        sendComment: function() {
+            if (this.content.length != 0){
+                var formData = new FormData()
+                formData.append("content", this.content)
+                formData.append("projectId", this.$route.query.projectId)
+                this.axios({      
+                        method: "post",
+                        url: "/hello/test/comment/insertComment",
+                        data: formData,
+                        // callback: success
+                    }).then(response => {
+                        if(response.data.code != 404){
+                            this.message = '评论成功'
+                            // this.reload()
+                            this.$router.go(0)
+                        }else{
+                            this.message = '评论失败'
+                        }
+                    })
+            }
+        }
     },
     mounted() {
+        this.$store.dispatch('getCommentListByProjectId', this.$route.query.projectId)
         this.$store.dispatch('getProjectDetail', this.$route.query.projectId)
+        this.$store.dispatch('getUserFollow', this.$route.query.projectId)
         
     },
     computed: {
-        ...mapState(['projectDetail'])
+        ...mapState(['projectDetail']),
+        ...mapState(['commentList'])
     }
 }
 </script>
@@ -110,6 +152,7 @@ export default {
     .detail_main {
         padding-top: 10px;
         min-height: 300px;
+        
     }
 
     .detail_user {
@@ -135,6 +178,7 @@ export default {
     .user_info_list p {
         width: 200px;
         clear: both;
+        float: left;
     }
     .project_detail p {
         padding: 10px 0 0 10px;
@@ -197,5 +241,38 @@ export default {
         border: 1px solid #ced4da;
         /* border-radius: .25rem; */
         transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    }
+    .detail_comment_list {
+        min-height: 100px;
+        padding: 0 50px 20px 50px;
+        /* position: relative; */
+        /* float: left; */
+        clear: both;
+        overflow: auto;
+        display: inline-block;
+    }
+    .comment_content {
+        padding: 0 20px 10px 20px;
+        margin: 5px;
+        min-width: 1000px;
+        clear: both;
+        overflow: auto;
+        display: inline-block;
+    }
+    .comment_list_picture {
+        float: left;
+        width: 60px;
+        height: 100px;
+        /* position: relative; */
+    }
+    .comment_list_picture img {
+        width: 50px;
+        height: 50px;
+        border-radius: 25px;
+    }
+    .comment_content_detail {
+        float: left;
+        padding: 0 10px 5px 10px;
+        min-width: 800px;
     }
 </style>

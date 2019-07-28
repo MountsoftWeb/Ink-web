@@ -17,5 +17,7 @@ export default {
     getFans: state => state.fans,
 
     getHotProject: state => state.hotProjects,
-    getHotUser: state => state.hotUsers
+    getHotUser: state => state.hotUsers,
+
+    getCommentListByProjectId: state => state.commentList
 }

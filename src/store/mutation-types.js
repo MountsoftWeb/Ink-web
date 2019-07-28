@@ -25,3 +25,5 @@ export const GETFANS = 'getfans'
 export const GETHOTPROJECT = 'gethotproject'
 
 export const GETHOTUSER = 'getuser'
+
+export const GETCOMMENTLISTBYPROJECTID = 'getcommentlistbyprojectid'

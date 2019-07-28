@@ -18,5 +18,7 @@ export default {
     fans: {},
 
     hotProjects: {},
-    hotUsers: {}
+    hotUsers: {},
+
+    commentList: {}
 }

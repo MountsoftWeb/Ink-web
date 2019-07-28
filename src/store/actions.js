@@ -12,7 +12,9 @@ import {
     GETFOLLOWS,
     GETFANS,
     GETHOTPROJECT,
-    GETHOTUSER
+    GETHOTUSER,
+    GETCOMMENTLISTBYPROJECTID,
+    GETUSERFANS
 } from './mutation-types'
 import axios from '../axios/http'
 import router from './../router'
@@ -153,7 +155,6 @@ export default {
             commit(GETFANS, response.data.data)
         })
     },
-
     // 获取热们作品 热门用户
     getHotProject({commit, data}) {
         axios({
@@ -179,5 +180,15 @@ export default {
         }).then(response => {
             router.go(0)
         })
+    },
+    // 按照作品 ID 获取相关评论
+    getCommentListByProjectId({commit, data}, projectId) {
+        axios({
+            method: "get",
+            url: "/hello/test/comment/getCommentList?projectId=" + projectId
+        }).then(response => {
+            commit(GETCOMMENTLISTBYPROJECTID, response.data.data)
+        })
     }
+
 }
