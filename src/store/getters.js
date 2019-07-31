@@ -19,5 +19,7 @@ export default {
     getHotProject: state => state.hotProjects,
     getHotUser: state => state.hotUsers,
 
-    getCommentListByProjectId: state => state.commentList
+    getCommentListByProjectId: state => state.commentList,
+
+    getUserDetailByUserId: state => state.userDetailByUserId
 }

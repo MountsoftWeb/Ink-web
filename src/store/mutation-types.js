@@ -27,3 +27,5 @@ export const GETHOTPROJECT = 'gethotproject'
 export const GETHOTUSER = 'getuser'
 
 export const GETCOMMENTLISTBYPROJECTID = 'getcommentlistbyprojectid'
+
+export const GETUSERDETAILBYUSERID = 'getuserdetailbyuserid'

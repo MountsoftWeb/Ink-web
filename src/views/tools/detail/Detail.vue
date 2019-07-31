@@ -6,7 +6,7 @@
         <div class="detail_main">
             <div class="detail_user">
                 <div class="user_info">
-                    <img id="user_picture" :src="projectDetail.userPicture">
+                    <img id="user_picture" :src="projectDetail.userPicture"   @click="userDetail(projectDetail.id)">
                     <div class="user_info_list">
                         <p>
                             <span>昵称：{{projectDetail.userName}}</span>
@@ -19,8 +19,8 @@
                         <p>
                             <span>粉丝：{{projectDetail.fans}}</span>
                         </p>
-                    <input type="button" value="关注">
-
+                    <input class="follow_btn" v-show="projectDetail.userFollowStatus != 1" type="button" value="关注" id="follow" @click="chooseFollow(projectDetail.id, projectDetail.userFollowStatus)">
+                    <input class="follow_btn" v-show="projectDetail.userFollowStatus == 1" type="button" value="取消关注" id="follow" @click="chooseFollow(projectDetail.id, projectDetail.userFollowStatus)">
                     </div>
 
 
@@ -83,6 +83,18 @@ export default {
         }
     },
     methods: {
+        chooseFollow: function(id, index) {
+            if (index == null){
+                // 发送点赞请求
+                this.$store.dispatch('updateFollow', [id, 2])
+            }else if (index == 0){
+                // 发送取消点赞请求
+                this.$store.dispatch('updateFollow', [id, 1])
+            }else {
+                // 发送点赞请求
+                this.$store.dispatch('updateFollow', [id, 0])
+            }
+        },
         chooseAppreciate: function(index) {
             if (index == null){
                 // 发送点赞请求
@@ -94,7 +106,6 @@ export default {
                 // 发送点赞请求
                 this.$store.dispatch('updataAppreciate', [this.$route.query.projectId, 0])
             }
-            
         },
         // 发送评论
         sendComment: function() {
@@ -117,6 +128,10 @@ export default {
                         }
                     })
             }
+        },
+        userDetail: function(index) {
+            let routeData = this.$router.resolve({path:'/tools/userDetail', query:{userId:index} })
+             window.open(routeData.href, '_blank');
         }
     },
     mounted() {
@@ -168,6 +183,7 @@ export default {
         height: 100px;
         border-radius: 5px;
         float: left;
+        cursor: pointer;
     }
     .user_info_list {
         float: left;

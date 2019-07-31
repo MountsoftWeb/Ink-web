@@ -14,7 +14,6 @@ import {
     GETHOTPROJECT,
     GETHOTUSER,
     GETCOMMENTLISTBYPROJECTID,
-    GETUSERFANS
 } from './mutation-types'
 import axios from '../axios/http'
 import router from './../router'
@@ -147,12 +146,26 @@ export default {
             commit(GETFOLLOWS, response.data.data)
         })
     },
-    getFans({commit, data}){
+    // 获取粉丝
+    getFans({commit, data}, userId){
         axios({
             method: "get",
             url: "/hello/user/getFans?userId=" + userId
         }).then(response => {
             commit(GETFANS, response.data.data)
+        })
+    },
+    updateFollow({commit, data}, status) {
+        axios({
+            method: "get",
+            url: "/hello/test/user/updateFollow?userId=" + status[0] + "&userFollowStatus=" + status[1], 
+        }).then(response => {
+            if (response.data.code != "404"){
+                router.go(0)
+            }else {
+                alert("失败");
+            }
+            
         })
     },
     // 获取热们作品 热门用户
@@ -188,6 +201,16 @@ export default {
             url: "/hello/test/comment/getCommentList?projectId=" + projectId
         }).then(response => {
             commit(GETCOMMENTLISTBYPROJECTID, response.data.data)
+        })
+    },
+
+    // 按照用户 ID 获取相关信息
+    getUserDetailByUserId({commit, data}, userId) {
+        axios({
+            method: "get",
+            url: "/hello/test/userDetail/getUserDetailByUserId?userId=" + userId
+        }).then(response => {
+            commit(GETUSERDETAILBYUSERID, response.data.data)
         })
     }
 

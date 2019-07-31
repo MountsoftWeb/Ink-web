@@ -20,5 +20,7 @@ export default {
     hotProjects: {},
     hotUsers: {},
 
-    commentList: {}
+    commentList: {},
+
+    userDetailByUserId: {}
 }

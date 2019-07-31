@@ -152,6 +152,14 @@ let router = new Router({
         {
           path: 'detail',
           component: Tools.Detail
+        },
+        {
+          path: 'userDetail',
+          component: Tools.UserDetail
+        },
+        {
+          path: 'userDetail/projectList',
+          component: Tools.UserDetail.ProjectList
         }
       ]
     },
