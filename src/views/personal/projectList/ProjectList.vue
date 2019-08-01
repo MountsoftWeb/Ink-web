@@ -5,22 +5,17 @@
             <ul class="detail_content_main">
                 <li><img :src="object.picture"></li>
                 <!-- <li><img :src="{{object.picture}}"></li> -->
-                <li>详情{{object.message}}</li>
-                <li>类别{{object.id}}</li>
-                <li>上传日期{{object.id}}</li>
-                <li>喜欢{{object.message}}</li>
-                <li>收藏{{object.message}}</li>
-                <li>所属用户{{object.message}}</li>
-                <li>
-                    <input id="delete" type="button" @click="deleteId(object.id)" value="删除"></input>
-                </li>
+                <li>详情{{object.name}}</li>
+                <li>上传日期{{object.upDate}}</li>
+                <li>喜欢{{object.apprecations}}</li>
+                <li>所属用户{{object.userName}}</li>
             </ul>    
         </div>
         <div class="page">
             <ul>
                 <li class="page_item" v-if="items.pageNum != 1">
                     <router-link
-                                :to="{path:'/user', query:{pageNum:items.pageNum - 1}}"
+                                :to="{path:'/personal', query:{pageNum:items.pageNum - 1}}"
                                 >
                                 上一页</router-link>
                 </li>
@@ -34,7 +29,7 @@
                 </li>
                 <li class="page_item" v-if="items.totalPage != items.pageNum">
                     <router-link 
-                                :to="{path:'/user', query:{pageNum:items.pageNum + 1}}">
+                                :to="{path:'/personal', query:{pageNum:items.pageNum + 1}}">
                                 下一页</router-link>
                 </li>
                 <li class="page_item">
@@ -55,7 +50,8 @@ export default {
             text: 0,
             // message: '点击图片修改',
             imgPath: '/Users/carlos/Documents/素材/社交二维码/carlos.jpg',
-            picture: ''
+            picture: '',
+            userId: ''
         }
     },
     methods: {
@@ -66,7 +62,7 @@ export default {
         aaa: function() {
             this.axios({
             method: "get",
-            url: "/hello/test/project/getProject?pageNum=" + this.$route.query.pageNum,
+            url: "/hello/test/personal/getPersonalPageNum?userId=" + this.userId + "&pageNum=" + this.$route.query.pageNum,
         }).then(response => {
             if (response.data.code == 200){
                 console.log(response.data.data)
@@ -80,9 +76,12 @@ export default {
     },
     // 页面加载执行
     mounted() {
+        if (this.$route.query.userId != "undefined"){
+            this.userId = this.$route.query.userId
+        } 
         this.axios({
             method: "get",
-            url: "/hello/test/project/getProject?pageNum=" + this.$route.query.pageNum,
+            url: "/hello/test/personal/getUserDetailByUserId?userId=" + this.$route.query.userId + "&pageNum=" + this.$route.query.pageNum,
         }).then(response => {
             if (response.data.code == 200){
                 // console.log(response.data.data)
@@ -94,7 +93,9 @@ export default {
     },
     watch: {
         '$route' (to, from) {
-            this.aaa()
+            if (this.$route.query.item == 0){
+                this.aaa()
+            }
         }
     }
  
@@ -188,7 +189,7 @@ export default {
 
     .page {
         float: left;
-        min-width: 900px;
+        min-width: 1300px;
         margin: 20px 0 20px 0;
         text-align: center;
     }

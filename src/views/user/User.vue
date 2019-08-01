@@ -72,11 +72,11 @@ export default {
                     text: "上传作品"
                 },
                 {
-                    to:"/user/userlist",
+                    to:"/user/userlist?item=" + this.$route.query.item,
                     text: "我的关注"
                 },
                 {
-                    to: "/user/userlist",
+                    to: "/user/userlist?item=" + this.$route.query.item,
                     text: "我的粉丝"
                 },
                 {
@@ -141,13 +141,6 @@ export default {
         '$route' (to, from) {
             // 2 获取关注 3 获取粉丝
             // this.$route.query.item
-            if (this.$route.query.item == 3){
-                alert("粉丝")
-            }
-            if (this.$route.query.item == 2){
-                alert("关注")
-            }
-            
         }
     }
 

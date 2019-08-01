@@ -130,7 +130,7 @@ export default {
             }
         },
         userDetail: function(index) {
-            let routeData = this.$router.resolve({path:'/tools/userDetail', query:{userId:index} })
+            let routeData = this.$router.resolve({path:'/personal', query:{userId:index} })
              window.open(routeData.href, '_blank');
         }
     },

@@ -1,15 +1,18 @@
 <template>
 <div>
     <div class="follow_fans_container">
-        <div v-for="(popple, index) in userlist" class="follow_fans">
-            <img id="user_picture" src="../carlos.jpg">
+        <div v-for="(people, index) in userlist" class="follow_fans">
+            <img id="user_picture" :src="people.userPicture" @click="choose(people.userId)">
             <div class="user_detail">
-                <p class="user_name">user_name</p>
+                <p class="user_name">{{people.username}}</p>
                 <p class="user_project">
-                    <span>作品: </span>
-                    <span>粉丝: </span>
+                    <span>作品: {{people.projects}}</span>
+                    <span>粉丝: {{people.fans}}</span>
+                    <span>粉丝: {{people.follows}}</span>
                 </p>
-                <p class="user_alter">取消关注</p>
+                <p  class="user_alter">
+                     <input  class="follow_btn" type="button" value="取消关注" id="follow" @click="chooseFollow(people.userId, 0)">
+                </p>
             </div>
         </div>
         
@@ -23,15 +26,28 @@
 export default {
     data() {
         return {
-            userlist: {
-                a:1,
-                w:2,
-                e:1,
-                r:2,
-                t:1,
-                y:2,
-            }
+            userlist: [],
+            type: ''
         }
+    },
+    methods: {
+        chooseFollow: function(id, index) {
+            this.$store.dispatch('updateFollow', [id, 0])
+        },
+    },
+    mounted() {
+        this.axios({
+            method: "get",
+            url: "/hello/test/user/getFollows?userId=" + this.$route.query.userId + "&pageNum=" + this.$route.query.pageNum + "&type=" + this.$route.query.item,
+        }).then(response => {
+            // if (response.data.code == "200"){
+                // console.log(response.data.data)
+                this.userlist = response.data.data.list
+                this.type = response.data.message
+            // }else{
+
+            // }
+        })
     }
     
 }

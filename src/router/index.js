@@ -12,6 +12,7 @@ import Test2 from '@/views/community'           // 社团
 import User from '@/views/user'                 // 用户详情
 import Project from '@/views/project'           // 项目
 import Tools from '@/views/tools'               // 工具
+import Personal from '@/views/personal'
 
 import store from '@/store/index'
 
@@ -153,13 +154,23 @@ let router = new Router({
           path: 'detail',
           component: Tools.Detail
         },
+      ]
+    },
+    {
+      path: '/personal',
+      name: 'personal',
+      component: Personal,
+      meta: {
+        requireAuth: true
+      },
+      children: [
         {
-          path: 'userDetail',
-          component: Tools.UserDetail
+          path: '',
+          component: Personal.ProjectList
         },
         {
-          path: 'userDetail/projectList',
-          component: Tools.UserDetail.ProjectList
+          path: 'userlist',
+          component: Personal.Userlist
         }
       ]
     },
@@ -167,7 +178,6 @@ let router = new Router({
     {
       path: '/test2',
       name: 'test2',
-      
       component: Test2,
       children: [
         {
