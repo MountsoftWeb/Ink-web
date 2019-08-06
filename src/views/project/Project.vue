@@ -29,12 +29,12 @@
                     </dd>
                 </dl>
 
-                <dl>
+                <!-- <dl>
                     <dt>标签</dt>
                     <dd>
-                        <!-- <span :class="activeLabelClass == index ? 'active':''" v-for="(label, index) in label" :key="index" @click="getLabel(index)">
+                        <span :class="activeLabelClass == index ? 'active':''" v-for="(label, index) in label" :key="index" @click="getLabel(index)">
                             <router-link  :to="{path:'/project', query:{id:label.id}}">{{label.label_name}}</router-link>
-                        </span> -->
+                        </span>
                         <router-link v-for="(label, index) in label"
                                     :key="label.value"
                                     :to="{path:'/project', query:{c:activeCategoryClass,l:label.id}}"
@@ -44,7 +44,7 @@
                             <el-tag type="info">{{label.label_name}}</el-tag>
                         </router-link>
                     </dd>
-                </dl>
+                </dl> -->
 
             </div>
             <div class="node">
@@ -87,13 +87,10 @@ export default {
         getCategorie: function(index){
             this.activeCategoryClass = index;
         },
-        getLabel: function(index) {
-            this.activeLabelClass = index
-        },
+        
         
     },
     mounted() {
-        this.$store.dispatch('getLabel')
         this.$store.dispatch('getCategories')
         if(this.$route.query.c){
             // alert(this.$route.query.item)
@@ -111,7 +108,6 @@ export default {
     //     ...mapState(['project'])
     // }
     computed: {
-        ...mapState(['label']),
         ...mapState(['categories']),
     }
 }

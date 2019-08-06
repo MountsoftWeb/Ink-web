@@ -22,7 +22,7 @@
           <span>点赞数:{{project.apprecations}}</span>
         </li>
         <li>
-          <span>地理位置</span>
+          <span>分类:{{project.categoryId}}</span>
         </li>
       </ul>
     </div>

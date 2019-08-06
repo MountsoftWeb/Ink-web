@@ -96,15 +96,30 @@ export default {
             }
         },
         chooseAppreciate: function(index) {
+            
             if (index == null){
                 // 发送点赞请求
-                this.$store.dispatch('updataAppreciate', [this.$route.query.projectId, 2])
+                
             }else if (index == 0){
                 // 发送取消点赞请求
-                this.$store.dispatch('updataAppreciate', [this.$route.query.projectId, 1])
-            }else {
+                this.$store.dispatch('updateAppreciate', [this.$route.query.projectId, 1])
+            }else if (index == 1){
                 // 发送点赞请求
-                this.$store.dispatch('updataAppreciate', [this.$route.query.projectId, 0])
+                this.$store.dispatch('updateAppreciate', [this.$route.query.projectId, 0])
+            }else {
+                this.$store.dispatch('updateAppreciate', [this.$route.query.projectId, 2])
+            }
+        },
+        throttle: function(func, wait) {
+            let previous = 0;
+            return function() {
+                let now = Date.now();
+                let context = this;
+                let args = arguments;
+                if (now - previous > wait) {
+                    func.apply(context, args);
+                    previous = now;
+                }
             }
         },
         // 发送评论

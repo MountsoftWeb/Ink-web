@@ -21,6 +21,15 @@
               <span>板绘</span>&nbsp;<input type="radio" value="2" name="paintingwayId" v-model.trim="paintingwayId">
               <span>墙绘</span>&nbsp;<input type="radio" value="3" name="paintingwayId" v-model.trim="paintingwayId">
     </p>
+    <p>
+      <span>分类</span>
+      <select name="category_choice" v-model="categorySelect" @change="getCategory">                                        
+          <option :value="category.id" v-for="category in categories" >{{category.category_name}}</option>                                    
+      </select>
+
+    </p>
+
+
       <span>标签：</span>
         <input type="text" name="label" v-model.trim="label">
       <p>
@@ -47,7 +56,7 @@
       alert(url)
       return url; 
     }
-
+import {mapState} from "vuex"
 export default {
   data (){
     return {
@@ -67,7 +76,7 @@ export default {
             formData.append('state', self.state)
             formData.append('paintingwayId', self.paintingwayId)
             formData.append('image_data', self.$refs.upload_file.files[0])
-
+            formData.append('category', self.categorySelect)
             //单个文件进行上传
             this.axios({      
                 method: "post",
@@ -91,7 +100,17 @@ export default {
     upload: function() {
       document.getElementById('upProject').click()
     }
-  }
+  },
+  mounted() {
+    this.$store.dispatch('getCategories')
+  },
+  created(){
+　　//如果没有这句代码，select中初始化会是空白的，默认选中就无法实现
+    this.categorySelect = this.categories[0].id;
+  },
+  computed: {
+        ...mapState(['categories']),
+    }
 
 }
 </script>
@@ -113,7 +132,7 @@ export default {
     cursor: pointer;
     color: #999;
   }
-  #upProject {
+  .upProject {
     display: none!important;
   }
   .upload_main {

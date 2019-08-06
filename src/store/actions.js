@@ -75,7 +75,7 @@ export default {
         // id[category, label, pageNum]
         axios({
             method: "get",
-            url: "/hello/project/getAllProject?c=" + id[0] + "&l=" + id[1] + "&pageNum=" + id[2]
+            url: "/hello/project/getAllProject?c=" + id[0] + "&pageNum=" + id[1]
         // + "&l=" + l,
          
             // data: id,
@@ -131,7 +131,8 @@ export default {
     getProjectDetail({commit, data}, projectId) {
         axios({
             method: "get",
-            url: "/hello/test/project/getProjectDetail?projectId=" + projectId
+            url: "/hello/test/project/getProjectDetail?projectId=" + projectId,
+            async: false
         }).then(response => {
             commit(GETPROJECTDETAIL, response.data.data)
         })
@@ -158,7 +159,8 @@ export default {
     updateFollow({commit, data}, status) {
         axios({
             method: "get",
-            url: "/hello/test/user/updateFollow?userId=" + status[0] + "&userFollowStatus=" + status[1], 
+            url: "/hello/test/user/updataFollow?userId=" + status[0] + "&userFollowStatus=" + status[1], 
+            async: false
         }).then(response => {
             if (response.data.code != "404"){
                 router.go(0)
@@ -186,12 +188,14 @@ export default {
         })
     },
     // 点赞判断
-    updataAppreciate({commit, data}, status) {
+    updateAppreciate({commit, data}, status) {
         axios({
             method: "get",
-            url: "/hello/test/project/updataAppreciate?projectId=" + status[0] + "&status=" + status[1], 
+            url: "/hello/test/project/updateAppreciate?projectId=" + status[0] + "&status=" + status[1], 
         }).then(response => {
             router.go(0)
+            // this.$store.dispatch('getProjectDetail', + status[0])
+            // getProjectDetail(status[0])
         })
     },
     // 按照作品 ID 获取相关评论

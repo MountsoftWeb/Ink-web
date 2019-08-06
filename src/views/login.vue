@@ -25,7 +25,7 @@
                         </div>
                         <!-- 注册 -->
                         <div class="form_input" v-if="showRegister">
-                                <input type="text" v-model.trim="registerData.username" name="username" placeholder="用户名" @keyup="register_check">
+                                <input type="text" v-model.trim="registerData.phone" name="phone" placeholder="用户名" @keyup="register_check">
                         
                                 <input type="password" v-model.trim="registerData.password" name="password" placeholder="密码" @keyup="register_check">
                                 <div class="form_button">
@@ -35,7 +35,7 @@
                         </div>
                         <!-- 登录 -->
                         <div class="form_input" v-if="showLogin">
-                            <input type="text" v-model.trim="loginData.username" name="username" placeholder="login" @keyup="login_check">
+                            <input type="text" v-model.trim="loginData.phone" name="phone" placeholder="login" @keyup="login_check">
                         
                             <input type="password" v-model.trim="loginData.password" name="password" placeholder="密码" @keyup="login_check">
                             <div class="form_button">
@@ -84,12 +84,12 @@
             showLogin: true,
             showRegister: false,
             loginData: {
-                username: '',
+                phone: '',
                 password: '',
                 logintype: 'phone'
             },
             registerData: {
-                username: '',
+                phone: '',
                 password: '',
                 logintype: 'phone'
             },
@@ -105,7 +105,7 @@
         },
         // 注册
         registerBtn: function() {
-            alert(this.registerData.username)
+            alert(this.registerData.phone)
             this.axios({      
                 method: "post",
                 url: "/hello/register",
@@ -124,13 +124,13 @@
             })
         },
         register_check: function() {
-            if (!(/^1[34578]\d{9}$/.test(this.registerData.username))) {
+            if (!(/^1[34578]\d{9}$/.test(this.registerData.phone))) {
                 this.message = "输入正确手机号"
                 this.register_isOk = false
             }else{
                 this.axios({
                     method: "post",
-                    url: "/hello/checkUser?username=" + this.registerData.username,
+                    url: "/hello/checkUser?username=" + this.registerData.phone,
                 }).then(response => {
                     if(response.data.code == 200){
                         this.message = "手机号可使用"
@@ -141,7 +141,7 @@
                     }
                 })
             }
-            if (this.registerData.password.length > 2 && this.registerData.username.trim().length > 1 && this.isPhone){
+            if (this.registerData.password.length > 2 && this.registerData.phone.trim().length > 1 && this.isPhone){
                 this.register_isOk = true
             }else{
                 // this.message = "填写正确手机号"
@@ -162,7 +162,7 @@
             // alert(localStorage.getItem('token'))
             // alert(this.$store.state.token)
         login_check: function() {
-            if (!(/^1[34578]\d{9}$/.test(this.loginData.username))) {
+            if (!(/^1[34578]\d{9}$/.test(this.loginData.phone))) {
                 console.log("电话号码格式错误")
                 this.message = "输入正确手机号"
                 // this.login_button = true
@@ -171,7 +171,7 @@
             }else{
                 this.message = ""
             }
-            if (this.loginData.password.length > 5 && this.loginData.username.trim().length != 0){
+            if (this.loginData.password.length > 5 && this.loginData.phone.trim().length != 0){
                 // this.login_button = false
                 this.message = ""
                 this.login_isOk = true

@@ -60,7 +60,7 @@ export default {
     },
     methods: {
         show: function() {
-            this.$store.dispatch('getProjectId', [this.$route.query.c, this.$route.query.l, this.$route.query.pageNum])
+            this.$store.dispatch('getProjectId', [this.$route.query.c, this.$route.query.pageNum])
         },
         // 打开对应作品详情页
         chooseProject: function(index) {
@@ -68,14 +68,14 @@ export default {
              window.open(routeData.href, '_blank');
         },
         page_btn: function(page){
-            this.$store.dispatch('getProjectId', [this.$route.query.c, this.$route.query.l, page])
+            this.$store.dispatch('getProjectId', [this.$route.query.c, page])
         }
     },
     created() {
     },
     mounted() {
         
-        this.$store.dispatch('getProjectId', [this.$route.query.c, this.$route.query.l, this.$route.query.pageNum])
+        this.$store.dispatch('getProjectId', [this.$route.query.c, this.$route.query.pageNum])
         
     },
     watch: {

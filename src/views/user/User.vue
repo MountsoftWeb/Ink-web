@@ -12,7 +12,7 @@
                     <span>点击图片修改</span>
                     <p>用户名:{{user.username}}</p>
                     <p>邮箱:{{user.email}}</p>
-                    <p>个人简介:</p>
+                    <p>个人简介: {{user.profile}}</p>
                     <div class="user_table">
                         <p>
                             <span >关注</span>
@@ -122,7 +122,8 @@ export default {
         getItem:function(index){
             // alert(item)
             this.activeClass = index;
-        }
+        },
+        
     },
     // 页面加载执行
     mounted() {
@@ -140,7 +141,10 @@ export default {
     watch: {
         '$route' (to, from) {
             // 2 获取关注 3 获取粉丝
-            // this.$route.query.item
+            // alert(this.$route.query.item)
+            // if (this.$route.query.item == 2 || this.$route.query.item == 3){
+            //     this.getFollowsFans()
+            // }
         }
     }
 
