@@ -13,6 +13,7 @@ import User from '@/views/user'                 // 用户详情
 import Project from '@/views/project'           // 项目
 import Tools from '@/views/tools'               // 工具
 import Personal from '@/views/personal'
+import Spider from '@/views/spider'             // 爬虫管理
 
 import store from '@/store/index'
 
@@ -33,10 +34,10 @@ let router = new Router({
       //   {
       //     path: '',
       //     component: First
-      //   }        
+      //   }
       // ]
     },
-    
+
     {
       path: '/test',
       name: 'Layout_1',
@@ -124,7 +125,7 @@ let router = new Router({
         requireAuth: true,  // 添加该字段，表示进入这个路由是需要登录的
       },
       component: Trading,
-      
+
       children: [
         {
           path: 'life',
@@ -190,13 +191,19 @@ let router = new Router({
         }
       ]
     },
-    
+
     {
       path: '/login',
       name: 'login',
       component: Login
     },
 
+    // 爬虫管理
+    {
+      path: '/spider',
+      name: 'spider',
+      component: Spider
+    },
     {
       path: '/upProject',
       name: 'upProject',
@@ -242,7 +249,7 @@ router.beforeEach((to, from, next) => {
         return
       }
       else {
-        
+
           next();
           return
       }

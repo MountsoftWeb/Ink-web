@@ -1,14 +1,14 @@
 <template>
     <div>
         <div class="login_header">
-            
+
         </div>
         <div class="login_medium">
             <!-- 登陆注册 -->
             <div class="layout_login">
                 <!-- <div class="layout_login_form"> -->
                     <h1>Mountsoft Ink</h1>
-                
+
                     <!-- 表单提交 -->
                     <div class="form_login">
 
@@ -26,7 +26,7 @@
                         <!-- 注册 -->
                         <div class="form_input" v-if="showRegister">
                                 <input type="text" v-model.trim="registerData.phone" name="phone" placeholder="用户名" @keyup="register_check">
-                        
+
                                 <input type="password" v-model.trim="registerData.password" name="password" placeholder="密码" @keyup="register_check">
                                 <div class="form_button">
                                     <input v-if="!register_isOk" :disabled="!register_isOk" type="button" value="注册" v-on:click="registerBtn">
@@ -36,7 +36,7 @@
                         <!-- 登录 -->
                         <div class="form_input" v-if="showLogin">
                             <input type="text" v-model.trim="loginData.phone" name="phone" placeholder="login" @keyup="login_check">
-                        
+
                             <input type="password" v-model.trim="loginData.password" name="password" placeholder="密码" @keyup="login_check">
                             <div class="form_button">
                                 <input v-if="!login_isOk" :disabled="!login_isOk" type="button" value="登录" v-on:click="loginBtn">
@@ -61,7 +61,7 @@
                                 <span class="ICP">
                                     <!-- <a href="http://www.miitbeian.gov.cn"> -->
                                         <li>
-                                            津ICP备19003477号
+                                            <!-- 津ICP备19003477号 -->
                                         </li>
                                     <!-- </a> -->
                                 </span>
@@ -69,7 +69,7 @@
                         </div>
                     </div>
 
-                    
+
                 <!-- </div> -->
             </div>
         </div>
@@ -106,7 +106,7 @@
         // 注册
         registerBtn: function() {
             alert(this.registerData.phone)
-            this.axios({      
+            this.axios({
                 method: "post",
                 url: "/hello/register",
                 data: this.registerData,
@@ -148,7 +148,7 @@
                 this.register_isOk = false
             }
         },
-        
+
         change: function(index){
     // console.log(index);
 },
@@ -156,7 +156,7 @@
             // alert(localStorage.getItem('token'))
 
             // this.$store.dispatch('logOut', '').then(() => {
-            // //  跳转到首页  
+            // //  跳转到首页
             //     this.$router.push('/');
             // })
             // alert(localStorage.getItem('token'))
@@ -195,7 +195,7 @@
             this.showRegister = false
             this.message = ""
         },
-        
+
 
     },
     // mounted() {
@@ -268,7 +268,7 @@
         top: 50px;
         left: 5%;
         position: relative;
-        
+
     }
     .message span{
         color: red;
@@ -278,7 +278,7 @@
         width: 100%;
         max-width: 400px;
         /* 透明度设置 0 ～ 1 */
-        opacity: 0.85;   
+        opacity: 0.85;
     }
     .form_register_login {
         /* width: 300px; */
@@ -289,12 +289,12 @@
         float: left;
         cursor: pointer;
         /* color: black; */
-        font-weight: 900;  
+        font-weight: 900;
         font-size: 18px;
         line-height: 2;
         /* border: solid; */
     }
-    
+
     .form_btn_register {
         /* line-height: inherit;
         border-bottom: 2px solid transparent;
@@ -331,7 +331,7 @@
         border-radius: 10px;
         padding-left: 9px;
     }
-    
+
     /* button 属性 */
     .form_button input{
         outline: none;

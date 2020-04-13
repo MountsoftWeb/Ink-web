@@ -9,7 +9,7 @@
                     <img id="user_picture" :src="projectDetail.userPicture"   @click="userDetail(projectDetail.id)">
                     <div class="user_info_list">
                         <p>
-                            <span>昵称：{{projectDetail.userName}}</span>
+                            <span>昵称：18847853889</span>
                         </p>
 
                         <p>

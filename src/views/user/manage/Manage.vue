@@ -78,7 +78,7 @@ export default {
   methods:{
     // 删除对应作品
     deleteProject: function(id) {
-      alert(id)
+      // alert(id)
       this.axios({      
         method: "get",
         url: "/hello/test/user/deleteProject?projectId=" + id,
